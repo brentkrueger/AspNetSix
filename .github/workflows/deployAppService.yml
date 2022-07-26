@@ -1,6 +1,7 @@
+name: Azure ARM
+
 on: [push]
-  name: Azure ARM
-  jobs:
+jobs:
     build-and-deploy:
       runs-on: ubuntu-latest
       steps:
