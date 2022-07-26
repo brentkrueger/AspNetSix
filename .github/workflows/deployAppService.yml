@@ -1,4 +1,4 @@
-name: Azure ARM
+name: Deploy Azure App Service via ARM Template
 
 on: [push]
 jobs:
