@@ -1,6 +1,7 @@
 name: Deploy Azure App Service via ARM Template
 
-on: [push]
+on:
+  workflow_dispatch:
 
 env:
   RESOURCE_GROUP_NAME: "AspNetSix"
