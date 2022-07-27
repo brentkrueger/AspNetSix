@@ -1,11 +1,16 @@
 name: Deploy Azure App Service via ARM Template
 
 on: [push]
+
+env:
+  RESOURCE_GROUP_NAME: "AspNetSix"
+  RESOURCE_GROUP_LOCATION: "centralus"
+
 jobs:
     build-and-deploy:
       runs-on: ubuntu-latest
       steps:
-
+        
         # Checkout code
       - uses: actions/checkout@main
 
@@ -13,6 +18,18 @@ jobs:
       - uses: azure/login@v1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
+
+      - name: Create resource group if not exists
+        uses: Azure/CLI@v1
+        with:
+            inlineScript: |
+              #!/bin/bash
+              if $(az group exists --name ${{ env.RESOURCE_GROUP_NAME }}) ; then
+                echo "Azure resource group already exists, skipping creation..."
+              else
+                az group create --name ${{ env.RESOURCE_GROUP_NAME }} --location ${{ env.RESOURCE_GROUP_LOCATION }}
+                echo "Azure resource group created"
+              fi    
 
         # Deploy ARM template
       - name: Run ARM deploy
