@@ -4,6 +4,9 @@
   "parameters": {
     "webAppName": {
       "value": "AspNetSix-Brent-Sample"
+    },
+    "serverName": {
+      "value": "AspNetSix-Brent-Sample-SqlServer"
     }
   }
 }
