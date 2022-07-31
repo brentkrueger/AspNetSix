@@ -9,7 +9,7 @@
       "value": "AspNetSix-Brent-Sample-SqlServer"
     },
     "sharedKeyVaultId":{
-      "value": "/subscriptions/11111aaa-1a11-1a11-a1aa-1a1111a111a1/resourceGroups/AspNetSixShared/providers/Microsoft.KeyVault/vaults/AspNetSixSharedKeyVault"
+      "value": "/subscriptions/593d2315-2583-4016-9f2f-970455ffda09/resourceGroups/AspNetSixShared/providers/Microsoft.KeyVault/vaults/AspNetSixSharedKeyVault"
     }
   }
 }
