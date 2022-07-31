@@ -1,4 +1,4 @@
-name: Deploy Azure App Service via ARM Template
+name: Deploy Application Infrastructure
 
 on:
   workflow_dispatch:
