@@ -39,7 +39,7 @@ jobs:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: ${{ secrets.AZURE_RG }}
           template: ./Deploy/azuredeploy.json
-          parameters: ./Deploy/azuredeploy.parameters.json administratorLogin=${{env.SQL_SERVER_ADMIN_USERNAME}} administratorLoginPassword=${{env.SQL_SERVER_ADMIN_PASSWORD}}
+          parameters: ./Deploy/azuredeploy.parameters.json
 
         # output containerName variable from template
       - run: echo ${{ steps.deploy.outputs.containerName }}
