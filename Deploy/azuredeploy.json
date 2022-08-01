@@ -71,104 +71,122 @@
         "description": "Password for local admin account."
       }
     },
-      "sqlAdminUsername": {
-        "type": "securestring",
-        "metadata": {
-          "description": "Password for local admin account."
-        }
+    "sqlAdminUsername": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Password for local admin account."
       }
+    }
+  },
+  "variables": {
+    "appServicePlanPortalName": "[concat('AppServicePlan-', parameters('webAppName'))]",
+    "gitRepoReference": {
+      ".net": "https://github.com/Azure-Samples/app-service-web-dotnet-get-started",
+      "node": "https://github.com/Azure-Samples/nodejs-docs-hello-world",
+      "php": "https://github.com/Azure-Samples/php-docs-hello-world",
+      "html": "https://github.com/Azure-Samples/html-docs-hello-world"
     },
-    "variables": {
-      "appServicePlanPortalName": "[concat('AppServicePlan-', parameters('webAppName'))]",
-      "gitRepoReference": {
-        ".net": "https://github.com/Azure-Samples/app-service-web-dotnet-get-started",
-        "node": "https://github.com/Azure-Samples/nodejs-docs-hello-world",
-        "php": "https://github.com/Azure-Samples/php-docs-hello-world",
-        "html": "https://github.com/Azure-Samples/html-docs-hello-world"
+    "gitRepoUrl": "[if(bool(parameters('helloWorld')), variables('gitRepoReference')[toLower(parameters('language'))], parameters('repoUrl'))]",
+    "configReference": {
+      ".net": {
+        "comments": ".Net app. No additional configuration needed."
       },
-      "gitRepoUrl": "[if(bool(parameters('helloWorld')), variables('gitRepoReference')[toLower(parameters('language'))], parameters('repoUrl'))]",
-      "configReference": {
-        ".net": {
-          "comments": ".Net app. No additional configuration needed."
-        },
-        "html": {
-          "comments": "HTML app. No additional configuration needed."
-        },
-        "php": {
-          "phpVersion": "7.4"
-        },
-        "node": {
-          "appSettings": [
-            {
-              "name": "WEBSITE_NODE_DEFAULT_VERSION",
-              "value": "12.15.0"
-            }
-          ]
-        }
-      }
-    },
-    "resources": [
-      {
-        "type": "Microsoft.Sql/servers",
-        "apiVersion": "2021-08-01-preview",
-        "name": "[parameters('serverName')]",
-        "location": "[parameters('location')]",
-        "properties": {
-          "administratorLogin": "[parameters('sqlAdminUsername')]",
-          "administratorLoginPassword": "[parameters('sqlAdminPassword')]"
-        }
+      "html": {
+        "comments": "HTML app. No additional configuration needed."
       },
-      {
-        "type": "Microsoft.Sql/servers/databases",
-        "apiVersion": "2021-08-01-preview",
-        "name": "[format('{0}/{1}', parameters('serverName'), parameters('sqlDBName'))]",
-        "location": "[parameters('location')]",
-        "sku": {
-          "name": "Standard",
-          "tier": "Standard"
-        },
-        "dependsOn": [
-          "[resourceId('Microsoft.Sql/servers', parameters('serverName'))]"
-        ]
+      "php": {
+        "phpVersion": "7.4"
       },
-      {
-        "type": "Microsoft.Web/serverfarms",
-        "apiVersion": "2020-06-01",
-        "name": "[variables('appServicePlanPortalName')]",
-        "location": "[parameters('location')]",
-        "sku": {
-          "name": "[parameters('sku')]"
-        }
-      },
-      {
-        "type": "Microsoft.Web/sites",
-        "apiVersion": "2020-06-01",
-        "name": "[parameters('webAppName')]",
-        "location": "[parameters('location')]",
-        "dependsOn": [
-          "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
-        ],
-        "properties": {
-          "siteConfig": "[variables('configReference')[parameters('language')]]",
-          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
-        },
-        "resources": [
+      "node": {
+        "appSettings": [
           {
-            "condition": "[contains(variables('gitRepoUrl'),'http')]",
-            "type": "sourcecontrols",
-            "apiVersion": "2020-06-01",
-            "name": "web",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-              "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
-            ],
-            "properties": {
-              "repoUrl": "[variables('gitRepoUrl')]",
-              "branch": "master",
-              "isManualIntegration": true
-            }
+            "name": "WEBSITE_NODE_DEFAULT_VERSION",
+            "value": "12.15.0"
           }
         ]
       }
-    ]
-  }
+    },
+    "defaultConnectionString": "[concat('Server=tcp:', parameters('serverName'), '.database.windows.net,1433;Database=', parameters('sqlDBName'), ';UID=', parameters('webAppName'), ';Authentication=Active Directory Interactive;')]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2021-08-01-preview",
+      "name": "[parameters('serverName')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "administratorLogin": "[parameters('sqlAdminUsername')]",
+        "administratorLoginPassword": "[parameters('sqlAdminPassword')]"
+      }
+    },
+    {
+      "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2021-08-01-preview",
+      "name": "[format('{0}/{1}', parameters('serverName'), parameters('sqlDBName'))]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard",
+        "tier": "Standard"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('serverName'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Web/serverfarms",
+      "apiVersion": "2020-06-01",
+      "name": "[variables('appServicePlanPortalName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "[parameters('sku')]"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2020-06-01",
+      "name": "[parameters('webAppName')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
+      ],
+      "properties": {
+        "siteConfig": "[variables('configReference')[parameters('language')]]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
+      },
+      "resources": [
+        {
+          "condition": "[contains(variables('gitRepoUrl'),'http')]",
+          "type": "sourcecontrols",
+          "apiVersion": "2020-06-01",
+          "name": "web",
+          "location": "[parameters('location')]",
+          "dependsOn": [
+            "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+          ],
+          "properties": {
+            "repoUrl": "[variables('gitRepoUrl')]",
+            "branch": "master",
+            "isManualIntegration": true
+          }
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.Web/sites/config",
+      "name": "[concat(parameters('webAppName'), '/connectionstrings')]",
+      "apiVersion": "2020-09-01",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+      ],
+      "properties": {
+        "DefaultConnection": {
+          "value": "[variables('defaultConnectionString')]",
+          "type": "SQLAzure"
+        }
+      }
+    },
+  ]
+}
