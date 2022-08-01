@@ -24,7 +24,7 @@ jobs:
       - uses: Azure/get-keyvault-secrets@v1
         with: 
             keyvault: "AspNetSixSharedKeyVault"
-            secrets: 'SqlServerAdminPassword, SqlServerAdminUsername'
+            secrets: 'SqlServerAdminPassword, SqlServerAdminUsername, SqlServerAADLoginName, SqlServerAADLoginOID'
         id: getSqlSecrets
 
       - name: Create resource group if not exists
@@ -46,7 +46,7 @@ jobs:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: ${{ secrets.AZURE_RG }}
           template: ./Deploy/azuredeploy.json
-          parameters: ./Deploy/azuredeploy.parameters.json sqlAdminUsername=${{ steps.getSqlSecrets.outputs.SqlServerAdminUsername }} sqlAdminPassword=${{ steps.getSqlSecrets.outputs.SqlServerAdminPassword }}
+          parameters: ./Deploy/azuredeploy.parameters.json sqlAdminUsername=${{ steps.getSqlSecrets.outputs.SqlServerAdminUsername }} sqlAdminPassword=${{ steps.getSqlSecrets.outputs.SqlServerAdminPassword }} sqlAADAdminLoginName=${{ steps.getSqlSecrets.outputs.SqlServerAADLoginName }} sqlAADAdminLoginOID=${{ steps.getSqlSecrets.outputs.SqlServerAADLoginOID }}
 
         # output containerName variable from template
       - run: echo ${{ steps.deploy.outputs.containerName }}
