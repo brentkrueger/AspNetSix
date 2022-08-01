@@ -65,121 +65,110 @@
         "description": "The name of the SQL Database."
       }
     },
-    "sharedKeyVaultId": {
-      "type": "string",
-      "defaultValue": "fromParametersFile",
+    "sqlAdminPassword": {
+      "type": "securestring",
       "metadata": {
-        "description": "The ID of the shared key vault."
+        "description": "Password for local admin account."
       }
-    }
-  },
-  "variables": {
-    "appServicePlanPortalName": "[concat('AppServicePlan-', parameters('webAppName'))]",
-    "gitRepoReference": {
-      ".net": "https://github.com/Azure-Samples/app-service-web-dotnet-get-started",
-      "node": "https://github.com/Azure-Samples/nodejs-docs-hello-world",
-      "php": "https://github.com/Azure-Samples/php-docs-hello-world",
-      "html": "https://github.com/Azure-Samples/html-docs-hello-world"
     },
-    "adminUsername": {
-      "reference": {
-        "keyVault": {
-          "id": "[parameters('sharedKeyVaultId')]"
+      "sqlAdminUsername": {
+        "type": "securestring",
+        "metadata": {
+          "description": "Password for local admin account."
+        }
+      }
+    },
+    "variables": {
+      "appServicePlanPortalName": "[concat('AppServicePlan-', parameters('webAppName'))]",
+      "gitRepoReference": {
+        ".net": "https://github.com/Azure-Samples/app-service-web-dotnet-get-started",
+        "node": "https://github.com/Azure-Samples/nodejs-docs-hello-world",
+        "php": "https://github.com/Azure-Samples/php-docs-hello-world",
+        "html": "https://github.com/Azure-Samples/html-docs-hello-world"
+      },
+      "gitRepoUrl": "[if(bool(parameters('helloWorld')), variables('gitRepoReference')[toLower(parameters('language'))], parameters('repoUrl'))]",
+      "configReference": {
+        ".net": {
+          "comments": ".Net app. No additional configuration needed."
         },
-        "secretName": "SqlServerAdminUsername"
-      }
-    },
-    "adminPassword": {
-      "reference": {
-        "keyVault": {
-          "id": "[parameters('sharedKeyVaultId')]"
+        "html": {
+          "comments": "HTML app. No additional configuration needed."
         },
-        "secretName": "SqlServerAdminPassword"
+        "php": {
+          "phpVersion": "7.4"
+        },
+        "node": {
+          "appSettings": [
+            {
+              "name": "WEBSITE_NODE_DEFAULT_VERSION",
+              "value": "12.15.0"
+            }
+          ]
+        }
       }
     },
-    "gitRepoUrl": "[if(bool(parameters('helloWorld')), variables('gitRepoReference')[toLower(parameters('language'))], parameters('repoUrl'))]",
-    "configReference": {
-      ".net": {
-        "comments": ".Net app. No additional configuration needed."
+    "resources": [
+      {
+        "type": "Microsoft.Sql/servers",
+        "apiVersion": "2021-08-01-preview",
+        "name": "[parameters('serverName')]",
+        "location": "[parameters('location')]",
+        "properties": {
+          "administratorLogin": "[parameters('sqlAdminUsername')]",
+          "administratorLoginPassword": "[parameters('sqlAdminPassword')]"
+        }
       },
-      "html": {
-        "comments": "HTML app. No additional configuration needed."
+      {
+        "type": "Microsoft.Sql/servers/databases",
+        "apiVersion": "2021-08-01-preview",
+        "name": "[format('{0}/{1}', parameters('serverName'), parameters('sqlDBName'))]",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "Standard",
+          "tier": "Standard"
+        },
+        "dependsOn": [
+          "[resourceId('Microsoft.Sql/servers', parameters('serverName'))]"
+        ]
       },
-      "php": {
-        "phpVersion": "7.4"
+      {
+        "type": "Microsoft.Web/serverfarms",
+        "apiVersion": "2020-06-01",
+        "name": "[variables('appServicePlanPortalName')]",
+        "location": "[parameters('location')]",
+        "sku": {
+          "name": "[parameters('sku')]"
+        }
       },
-      "node": {
-        "appSettings": [
+      {
+        "type": "Microsoft.Web/sites",
+        "apiVersion": "2020-06-01",
+        "name": "[parameters('webAppName')]",
+        "location": "[parameters('location')]",
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
+        ],
+        "properties": {
+          "siteConfig": "[variables('configReference')[parameters('language')]]",
+          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
+        },
+        "resources": [
           {
-            "name": "WEBSITE_NODE_DEFAULT_VERSION",
-            "value": "12.15.0"
+            "condition": "[contains(variables('gitRepoUrl'),'http')]",
+            "type": "sourcecontrols",
+            "apiVersion": "2020-06-01",
+            "name": "web",
+            "location": "[parameters('location')]",
+            "dependsOn": [
+              "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+            ],
+            "properties": {
+              "repoUrl": "[variables('gitRepoUrl')]",
+              "branch": "master",
+              "isManualIntegration": true
+            }
           }
         ]
       }
-    }
-  },
-  "resources": [
-    {
-      "type": "Microsoft.Sql/servers",
-      "apiVersion": "2021-08-01-preview",
-      "name": "[parameters('serverName')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "administratorLogin": "[variables('adminUsername')]",
-        "administratorLoginPassword": "[variables('adminPassword')]"
-      }
-    },
-    {
-      "type": "Microsoft.Sql/servers/databases",
-      "apiVersion": "2021-08-01-preview",
-      "name": "[format('{0}/{1}', parameters('serverName'), parameters('sqlDBName'))]",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "Standard",
-        "tier": "Standard"
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Sql/servers', parameters('serverName'))]"
-      ]
-    },
-    {
-      "type": "Microsoft.Web/serverfarms",
-      "apiVersion": "2020-06-01",
-      "name": "[variables('appServicePlanPortalName')]",
-      "location": "[parameters('location')]",
-      "sku": {
-        "name": "[parameters('sku')]"
-      }
-    },
-    {
-      "type": "Microsoft.Web/sites",
-      "apiVersion": "2020-06-01",
-      "name": "[parameters('webAppName')]",
-      "location": "[parameters('location')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
-      ],
-      "properties": {
-        "siteConfig": "[variables('configReference')[parameters('language')]]",
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
-      },
-      "resources": [
-        {
-          "condition": "[contains(variables('gitRepoUrl'),'http')]",
-          "type": "sourcecontrols",
-          "apiVersion": "2020-06-01",
-          "name": "web",
-          "location": "[parameters('location')]",
-          "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
-          ],
-          "properties": {
-            "repoUrl": "[variables('gitRepoUrl')]",
-            "branch": "master",
-            "isManualIntegration": true
-          }
-        }
-      ]
-    }
-  ]
-}
+    ]
+  }
