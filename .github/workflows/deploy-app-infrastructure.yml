@@ -6,6 +6,7 @@ on:
 env:
   RESOURCE_GROUP_NAME: "AspNetSix"
   RESOURCE_GROUP_LOCATION: "centralus"
+  AZURE_TENANT_ID: "6567301b-7e83-403a-a15f-56d9dc59f19c"
 
 jobs:
     build-and-deploy:
