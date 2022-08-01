@@ -9,20 +9,10 @@
       "value": "AspNetSix-Brent-Sample-SqlServer"
     },
     "sqlAdminPassword": {
-      "reference": {
-        "keyVault": {
-          "id": "/subscriptions/593d2315-2583-4016-9f2f-970455ffda09/resourceGroups/AspNetSixShared/providers/Microsoft.KeyVault/vaults/AspNetSixSharedKeyVault"
-        },
-        "secretName": "SqlServerAdminPassword"
-      }
+        "value": "passedIn"
     },
     "sqlAdminUsername": {
-      "reference": {
-        "keyVault": {
-          "id": "/subscriptions/593d2315-2583-4016-9f2f-970455ffda09/resourceGroups/AspNetSixShared/providers/Microsoft.KeyVault/vaults/AspNetSixSharedKeyVault"
-        },
-        "secretName": "SqlServerAdminPassword"
-      }
+        "value": "passedIn"
     }
   }
 }
