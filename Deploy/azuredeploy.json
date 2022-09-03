@@ -132,21 +132,17 @@
       }
     },
 	{
-
-            "type": "Microsoft.Sql/servers/firewallRules",
-            "kind": "v12.0",
-            "name": "[concat(parameters('serverName'), '/', 'AllowAzureServices')]",
-            "apiVersion": "2014-04-01",
-            "location": "[parameters('location')]",
-            "scale": null,
-            "properties": {
-                "startIpAddress": "0.0.0.0",
-                "endIpAddress": "0.0.0.0"
-            },
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers', parameters('serverName'))]"
-            ]
-        },
+    "type": "Microsoft.Sql/servers/firewallRules",
+    "apiVersion": "2015-05-01-preview",
+    "name": "[concat(parameters('serverName'), '/AllowAllWindowsAzureIps')]",
+    "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('serverName'))]"
+    ],
+    "properties": {
+        "startIpAddress": "0.0.0.0",
+        "endIpAddress": "0.0.0.0"
+    }
+},
     {
             "type": "Microsoft.Sql/servers/administrators",
             "apiVersion": "2019-06-01-preview",
