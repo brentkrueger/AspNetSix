@@ -118,7 +118,7 @@
         ]
       }
     },
-    "defaultConnectionString": "[concat('Server=tcp:', parameters('serverName'), '.database.windows.net,1433;Database=', parameters('sqlDBName'), ';UID=', parameters('webAppName'), ';Authentication=Active Directory Interactive;')]"
+    "defaultConnectionString": "[concat('Server=tcp:', parameters('serverName'), '.database.windows.net;Database=', parameters('sqlDBName'), ';Authentication=Active Directory Default;')]"
   },
   "resources": [
     {
