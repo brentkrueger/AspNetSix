@@ -31,7 +31,6 @@ jobs:
         uses: Azure/CLI@v1
         with:
             inlineScript: |
-              #!/bin/bash
               if $(az group exists --name ${{ env.RESOURCE_GROUP_NAME }}) ; then
                 echo "Azure resource group already exists, skipping creation..."
               else
@@ -50,15 +49,9 @@ jobs:
           parameters: ./Deploy/azuredeploy.parameters.json sqlAdminUsername=${{ steps.getSqlSecrets.outputs.SqlServerAdminUsername }} sqlAdminPassword=${{ steps.getSqlSecrets.outputs.SqlServerAdminPassword }} sqlAADAdminLoginName=${{ steps.getSqlSecrets.outputs.SqlServerAADLoginName }} sqlAADAdminLoginOID=${{ steps.getSqlSecrets.outputs.SqlServerAADLoginOID }}
           
       - name: Give App Service, secret read permission on Key Vault
-        uses: Azure/powershell@v1
+        uses: Azure/CLI@v1
         with:
-          # Specify the Az PowerShell script here.
-          inlineScript: 
+            inlineScript: |
+              az keyvault set-policy --name ${{ steps.deploy.outputs.keyVaultName }} --spn ${{ steps.deploy.outputs.appServicePrincipalId }} --secret-permissions get
           
-            $appService = Get-AzWebApp -Name ${{ steps.deploy.outputs.appServiceName }} -ResourceGroupName ${{ env.RESOURCE_GROUP_NAME }}
-
-            if($appService){
-              write-host ("App Service Found, setting secret get permission on key vault")
-              Set-AzKeyVaultAccessPolicy -VaultName ${{ steps.deploy.outputs.appServiceName }} -ObjectId $appService.Identity.PrincipalId -PermissionsToSecrets Get
-            }
-          azPSVersion: latest
+            
