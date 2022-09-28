@@ -2,7 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "webAppName": {
+    "appServiceName": {
       "type": "string",
       "defaultValue": "fromParametersFile",
       "minLength": 2,
@@ -65,7 +65,7 @@
         "description": "The name of the SQL Database."
       }
     },
-    "keyVault_name": {
+    "keyVaultName": {
       "type": "string",
       "defaultValue": "fromParametersFile",
       "metadata": {
@@ -98,7 +98,7 @@
     }
   },
   "variables": {
-    "appServicePlanPortalName": "[concat('AppServicePlan-', parameters('webAppName'))]",
+    "appServicePlanPortalName": "[concat('AppServicePlan-', parameters('appServiceName'))]",
     "gitRepoReference": {
       ".net": "https://github.com/Azure-Samples/app-service-web-dotnet-get-started",
       "node": "https://github.com/Azure-Samples/nodejs-docs-hello-world",
@@ -126,8 +126,8 @@
       }
     },
     "defaultConnectionString": "[concat('Server=tcp:', parameters('serverName'), '.database.windows.net;Database=', parameters('sqlDBName'), ';Authentication=Active Directory Default;')]",
-    "appInsightsName": "[concat(parameters('webAppName'), '-AppInsights')]",
-    "keyVault_secretUriRoot": "[concat('https://', parameters('keyVault_name'), '.vault.azure.net/secrets/')]",
+    "appInsightsName": "[concat(parameters('appServiceName'), '-AppInsights')]",
+    "keyVault_secretUriRoot": "[concat('https://', parameters('keyVaultName'), '.vault.azure.net/secrets/')]",
     "keyVaultAuthGoogleClientIdSecretRef": "[concat(variables('keyVault_secretUriRoot'), 'Authentication-Google-ClientId/')]",
     "keyVaultAuthGoogleClientSecretSecretRef": "[concat(variables('keyVault_secretUriRoot'), 'Authentication-Google-ClientSecret/')]"
   },
@@ -204,7 +204,7 @@
     {
       "type": "Microsoft.Web/sites",
       "apiVersion": "2020-06-01",
-      "name": "[parameters('webAppName')]",
+      "name": "[parameters('appServiceName')]",
       "location": "[parameters('location')]",
       "identity": {
         "type": "SystemAssigned"
@@ -224,7 +224,7 @@
           "name": "web",
           "location": "[parameters('location')]",
           "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+            "[resourceId('Microsoft.Web/sites', parameters('appServiceName'))]"
           ],
           "properties": {
             "repoUrl": "[variables('gitRepoUrl')]",
@@ -237,10 +237,10 @@
     {
       "type": "Microsoft.Web/sites/config",
       "apiVersion": "2019-08-01",
-      "name": "[concat(parameters('webAppName'), '/appsettings')]",
+      "name": "[concat(parameters('appServiceName'), '/appsettings')]",
       "location": "[parameters('location')]",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]",
+        "[resourceId('Microsoft.Web/sites', parameters('appServiceName'))]",
         "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
       ],
       "properties": {
@@ -255,10 +255,10 @@
     },
     {
       "type": "Microsoft.Web/sites/config",
-      "name": "[concat(parameters('webAppName'), '/connectionstrings')]",
+      "name": "[concat(parameters('appServiceName'), '/connectionstrings')]",
       "apiVersion": "2020-09-01",
       "dependsOn": [
-        "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+        "[resourceId('Microsoft.Web/sites', parameters('appServiceName'))]"
       ],
       "properties": {
         "DefaultConnection": {
@@ -267,5 +267,15 @@
         }
       }
     }
-  ]
+  ],
+  "outputs": {
+        "keyVaultName": {
+            "type": "string",
+            "value": "[parameters('keyVaultName')]"
+        },
+        "appServiceName": {
+            "type": "string",
+            "value": "[reference(resourceId('Microsoft.Web/sites', parameters('appServiceName')), '2019-08-01', 'full').identity.principalId]"
+        }
+    }
 }
