@@ -61,3 +61,4 @@ jobs:
               write-host ("Setting keyvault access policy for:" + " " + ${{ steps.deploy.outputs.appServiceName }})
               Set-AzKeyVaultAccessPolicy -VaultName ${{ steps.deploy.outputs.appServiceName }} -ObjectId $appService.Identity.PrincipalId -PermissionsToSecrets Get
             }
+          azPSVersion: latest
