@@ -13,6 +13,9 @@
     },
     "sqlAdminUsername": {
         "value": "passedIn"
-    }
+    },
+    "keyVault_name": {
+      "value": "AspNetSixSharedKeyVault"
+  }
   }
 }

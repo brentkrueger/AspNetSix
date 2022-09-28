@@ -65,6 +65,13 @@
         "description": "The name of the SQL Database."
       }
     },
+    "keyVault_name": {
+      "type": "string",
+      "defaultValue": "fromParametersFile",
+      "metadata": {
+        "description": "The name of the Key Vault."
+      }
+    },
     "sqlAdminPassword": {
       "type": "securestring",
       "metadata": {
@@ -118,7 +125,11 @@
         ]
       }
     },
-    "defaultConnectionString": "[concat('Server=tcp:', parameters('serverName'), '.database.windows.net;Database=', parameters('sqlDBName'), ';Authentication=Active Directory Default;')]"
+    "defaultConnectionString": "[concat('Server=tcp:', parameters('serverName'), '.database.windows.net;Database=', parameters('sqlDBName'), ';Authentication=Active Directory Default;')]",
+    "appInsightsName": "[concat(parameters('webAppName'), '-AppInsights')]",
+    "keyVault_secretUriRoot": "[concat('https://', parameters('keyVault_name'), '.vault.azure.net/secrets/')]",
+    "keyVaultAuthGoogleClientIdSecretRef": "[concat(variables('keyVault_secretUriRoot'), 'Authentication-Google-ClientId/')]",
+    "keyVaultAuthGoogleClientSecretSecretRef": "[concat(variables('keyVault_secretUriRoot'), 'Authentication-Google-ClientSecret/')]"
   },
   "resources": [
     {
@@ -131,32 +142,32 @@
         "administratorLoginPassword": "[parameters('sqlAdminPassword')]"
       }
     },
-	{
-    "type": "Microsoft.Sql/servers/firewallRules",
-    "apiVersion": "2015-05-01-preview",
-    "name": "[concat(parameters('serverName'), '/AllowAllWindowsAzureIps')]",
-    "dependsOn": [
+    {
+      "type": "Microsoft.Sql/servers/firewallRules",
+      "apiVersion": "2015-05-01-preview",
+      "name": "[concat(parameters('serverName'), '/AllowAllWindowsAzureIps')]",
+      "dependsOn": [
         "[resourceId('Microsoft.Sql/servers', parameters('serverName'))]"
-    ],
-    "properties": {
+      ],
+      "properties": {
         "startIpAddress": "0.0.0.0",
         "endIpAddress": "0.0.0.0"
-    }
-},
+      }
+    },
     {
-            "type": "Microsoft.Sql/servers/administrators",
-            "apiVersion": "2019-06-01-preview",
-            "name": "[concat(parameters('serverName'), '/ActiveDirectory')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers', parameters('serverName'))]"
-            ],
-            "properties": {
-                "administratorType": "ActiveDirectory",
-                "login": "[parameters('sqlAADAdminLoginName')]",
-                "sid": "[parameters('sqlAADAdminLoginOID')]",
-                "tenantId": "[subscription().tenantId]"
-            }
-        },
+      "type": "Microsoft.Sql/servers/administrators",
+      "apiVersion": "2019-06-01-preview",
+      "name": "[concat(parameters('serverName'), '/ActiveDirectory')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('serverName'))]"
+      ],
+      "properties": {
+        "administratorType": "ActiveDirectory",
+        "login": "[parameters('sqlAADAdminLoginName')]",
+        "sid": "[parameters('sqlAADAdminLoginOID')]",
+        "tenantId": "[subscription().tenantId]"
+      }
+    },
     {
       "type": "Microsoft.Sql/servers/databases",
       "apiVersion": "2021-08-01-preview",
@@ -177,6 +188,17 @@
       "location": "[parameters('location')]",
       "sku": {
         "name": "[parameters('sku')]"
+      }
+    },
+    {
+      "type": "Microsoft.Insights/components",
+      "apiVersion": "2020-02-02",
+      "name": "[variables('appInsightsName')]",
+      "location": "[parameters('location')]",
+      "kind": "web",
+      "properties": {
+        "Application_Type": "web",
+        "Request_Source": "rest"
       }
     },
     {
@@ -211,6 +233,25 @@
           }
         }
       ]
+    },
+    {
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "2019-08-01",
+      "name": "[concat(parameters('webAppName'), '/appsettings')]",
+      "location": "[parameters('location')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]",
+        "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
+      ],
+      "properties": {
+
+        "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('Microsoft.Insights/components/', variables('appInsightsName'))).InstrumentationKey]",
+        "APPLICATIONINSIGHTS_CONNECTION_STRING": "[reference(concat('Microsoft.Insights/components/', variables('appInsightsName'))).ConnectionString]",
+        "ApplicationInsightsAgent_EXTENSION_VERSION": "~2",
+        "XDT_MicrosoftApplicationInsights_Mode": "default",
+        "Authentication:Google:ClientId": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientIdSecretRef'), ')')]",
+        "Authentication:Google:ClientSecret": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientSecretSecretRef'), ')')]"
+      }
     },
     {
       "type": "Microsoft.Web/sites/config",
