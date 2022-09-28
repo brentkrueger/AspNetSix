@@ -58,7 +58,7 @@ jobs:
             $appService = Get-AzWebApp -Name ${{ steps.deploy.outputs.appServiceName }} -ResourceGroupName ${{ env.RESOURCE_GROUP_NAME }}
 
             if($appService){
-              write-host ("Setting keyvault access policy for:" + " " + ${{ steps.deploy.outputs.appServiceName }})
+              write-host ("App Service Found, setting secret get permission on key vault")
               Set-AzKeyVaultAccessPolicy -VaultName ${{ steps.deploy.outputs.appServiceName }} -ObjectId $appService.Identity.PrincipalId -PermissionsToSecrets Get
             }
           azPSVersion: latest
