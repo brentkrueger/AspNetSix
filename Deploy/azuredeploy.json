@@ -277,7 +277,7 @@
             "type": "string",
             "value": "[parameters('appServiceName')]"
         },
-        "appServicePrincipalId": {
+        "appServiceObjectId": {
             "type": "string",
             "value": "[reference(resourceId('Microsoft.Web/sites', parameters('appServiceName')), '2019-08-01', 'full').identity.objectId]"
         }
