@@ -273,7 +273,7 @@
             "type": "string",
             "value": "[parameters('keyVaultName')]"
         },
-        "appServiceName": {
+        "appServicePrincipalId": {
             "type": "string",
             "value": "[reference(resourceId('Microsoft.Web/sites', parameters('appServiceName')), '2019-08-01', 'full').identity.principalId]"
         }
