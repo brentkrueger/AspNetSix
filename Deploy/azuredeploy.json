@@ -279,7 +279,7 @@
         },
         "appServiceObjectId": {
             "type": "string",
-            "value": "[reference(resourceId('Microsoft.Web/sites', parameters('appServiceName')), '2019-08-01', 'full').identity.objectId]"
+            "value": "[reference(resourceId('Microsoft.Web/sites', parameters('appServiceName')), '2019-08-01', 'full').identity.principalId]"
         }
     }
 }
