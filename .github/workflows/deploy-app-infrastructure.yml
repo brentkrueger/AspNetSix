@@ -52,6 +52,6 @@ jobs:
         uses: Azure/CLI@v1
         with:
             inlineScript: |
-              az keyvault set-policy --name ${{ steps.deploy.outputs.keyVaultName }} --spn ${{ steps.deploy.outputs.appServicePrincipalId }} --secret-permissions get
+              az keyvault set-policy --name ${{ steps.deploy.outputs.keyVaultName }} --spn ${{ steps.deploy.outputs.appServiceName }} --secret-permissions get
           
             
