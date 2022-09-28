@@ -42,11 +42,22 @@ jobs:
         # Deploy ARM template
       - name: Run ARM deploy
         uses: azure/arm-deploy@v1
+        id: deploy
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
           resourceGroupName: ${{ secrets.AZURE_RG }}
           template: ./Deploy/azuredeploy.json
           parameters: ./Deploy/azuredeploy.parameters.json sqlAdminUsername=${{ steps.getSqlSecrets.outputs.SqlServerAdminUsername }} sqlAdminPassword=${{ steps.getSqlSecrets.outputs.SqlServerAdminPassword }} sqlAADAdminLoginName=${{ steps.getSqlSecrets.outputs.SqlServerAADLoginName }} sqlAADAdminLoginOID=${{ steps.getSqlSecrets.outputs.SqlServerAADLoginOID }}
+          
+      - name: Give App Service, secret read permission on Key Vault
+        uses: Azure/powershell@v1
+        with:
+          # Specify the Az PowerShell script here.
+          inlineScript: 
+          
+            $appService = Get-AzWebApp -Name ${{ steps.deploy.outputs.appServiceName }} -ResourceGroupName ${{ env.RESOURCE_GROUP_NAME }}
 
-        # output containerName variable from template
-      - run: echo ${{ steps.deploy.outputs.containerName }}
+            if($appService){
+              write-host ("Setting keyvault access policy for:" + " " + ${{ steps.deploy.outputs.appServiceName }})
+              Set-AzKeyVaultAccessPolicy -VaultName ${{ steps.deploy.outputs.appServiceName }} -ObjectId $appService.Identity.PrincipalId -PermissionsToSecrets Get
+            }
