@@ -5,6 +5,9 @@
     "appServiceName": {
       "value": "AspNetSix-Brent-Sample"
     },
+    "apiAppServiceName": {
+      "value": "WebApiSeven-Brent-Sample"
+    },
     "serverName": {
       "value": "AspNetSix-Brent-Sample-SqlServer"
     },

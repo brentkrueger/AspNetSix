@@ -10,6 +10,14 @@
         "description": "Web app name."
       }
     },
+    "apiAppServiceName": {
+      "type": "string",
+      "defaultValue": "fromParametersFile",
+      "minLength": 2,
+      "metadata": {
+        "description": "Web api name."
+      }
+    },
     "location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]",
@@ -35,20 +43,6 @@
       ],
       "metadata": {
         "description": "The language stack of the app."
-      }
-    },
-    "helloWorld": {
-      "type": "bool",
-      "defaultValue": false,
-      "metadata": {
-        "description": "true = deploy a sample Hello World app."
-      }
-    },
-    "repoUrl": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-        "description": "Optional Git Repo URL"
       }
     },
     "serverName": {
@@ -99,13 +93,6 @@
   },
   "variables": {
     "appServicePlanPortalName": "[concat('AppServicePlan-', parameters('appServiceName'))]",
-    "gitRepoReference": {
-      ".net": "https://github.com/Azure-Samples/app-service-web-dotnet-get-started",
-      "node": "https://github.com/Azure-Samples/nodejs-docs-hello-world",
-      "php": "https://github.com/Azure-Samples/php-docs-hello-world",
-      "html": "https://github.com/Azure-Samples/html-docs-hello-world"
-    },
-    "gitRepoUrl": "[if(bool(parameters('helloWorld')), variables('gitRepoReference')[toLower(parameters('language'))], parameters('repoUrl'))]",
     "configReference": {
       ".net": {
         "comments": ".Net app. No additional configuration needed."
@@ -215,24 +202,49 @@
       "properties": {
         "siteConfig": "[variables('configReference')[parameters('language')]]",
         "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "2022-03-01",
+      "name": "[concat(parameters('appServiceName'), '/web')]",
+      "location": "Central US",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('appServiceName'))]"
+      ],
+      "properties": {
+
+        "netFrameworkVersion": "v7.0"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2020-06-01",
+      "name": "[parameters('apiAppServiceName')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
       },
-      "resources": [
-        {
-          "condition": "[contains(variables('gitRepoUrl'),'http')]",
-          "type": "sourcecontrols",
-          "apiVersion": "2020-06-01",
-          "name": "web",
-          "location": "[parameters('location')]",
-          "dependsOn": [
-            "[resourceId('Microsoft.Web/sites', parameters('appServiceName'))]"
-          ],
-          "properties": {
-            "repoUrl": "[variables('gitRepoUrl')]",
-            "branch": "master",
-            "isManualIntegration": true
-          }
-        }
-      ]
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
+      ],
+      "properties": {
+        "siteConfig": "[variables('configReference')[parameters('language')]]",
+        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
+      }
+    },
+    {
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "2022-03-01",
+      "name": "[concat(parameters('apiAppServiceName'), '/web')]",
+      "location": "Central US",
+      "dependsOn": [
+        "[resourceId('Microsoft.Web/sites', parameters('apiAppServiceName'))]"
+      ],
+      "properties": {
+
+        "netFrameworkVersion": "v7.0"
+      }
     },
     {
       "type": "Microsoft.Web/sites/config",
@@ -244,7 +256,6 @@
         "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
       ],
       "properties": {
-
         "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(concat('Microsoft.Insights/components/', variables('appInsightsName'))).InstrumentationKey]",
         "APPLICATIONINSIGHTS_CONNECTION_STRING": "[reference(concat('Microsoft.Insights/components/', variables('appInsightsName'))).ConnectionString]",
         "ApplicationInsightsAgent_EXTENSION_VERSION": "~2",
@@ -269,17 +280,17 @@
     }
   ],
   "outputs": {
-        "keyVaultName": {
-            "type": "string",
-            "value": "[parameters('keyVaultName')]"
-        },
-        "appServiceName": {
-            "type": "string",
-            "value": "[parameters('appServiceName')]"
-        },
-        "appServiceObjectId": {
-            "type": "string",
-            "value": "[reference(resourceId('Microsoft.Web/sites', parameters('appServiceName')), '2019-08-01', 'full').identity.principalId]"
-        }
+    "keyVaultName": {
+      "type": "string",
+      "value": "[parameters('keyVaultName')]"
+    },
+    "appServiceName": {
+      "type": "string",
+      "value": "[parameters('appServiceName')]"
+    },
+    "appServiceObjectId": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Web/sites', parameters('appServiceName')), '2019-08-01', 'full').identity.principalId]"
     }
+  }
 }
