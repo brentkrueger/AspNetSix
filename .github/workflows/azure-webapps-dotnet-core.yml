@@ -22,6 +22,8 @@ name: Build and deploy ASP.Net Core 6.0 app to existing Azure App Service
 env:
   AZURE_WEBAPP_NAME: AspNetSix-Brent-Sample    # set this to the name of your Azure Web App
   AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
+  AZURE_WEBAPI_NAME: WebApiSeven-Brent-Sample    # set this to the name of your Azure Web App
+  AZURE_WEBAPI_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '7.0'                 # set this to the .NET Core version to use
 
 on:
@@ -91,6 +93,13 @@ jobs:
         with:
           app-name: ${{ env.AZURE_WEBAPP_NAME }}
           package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+
+      - name: Deploy to Azure Web Api
+        id: deploy-to-webapi
+        uses: azure/webapps-deploy@v2
+        with:
+          app-name: ${{ env.AZURE_WEBAPI_NAME }}
+          package: ${{ env.AZURE_WEBAPI_PACKAGE_PATH }}
           
       - name: az cli logout
         run: az logout
