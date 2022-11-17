@@ -102,6 +102,10 @@ jobs:
         with:
           name: .net-webapp
 
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: ${{env.DOTNET_ROOT}}/${{ env.WEBAPP_PROJECT_NAME }}
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -113,6 +117,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
             name: .net-webapi
+
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: ${{env.DOTNET_ROOT}}/${{ env.WEBAPI_PROJECT_NAME }}
 
       - name: Deploy to Azure Web Api
         id: deploy-to-webapi
