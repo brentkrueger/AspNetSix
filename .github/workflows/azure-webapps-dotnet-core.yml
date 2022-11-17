@@ -58,12 +58,6 @@ jobs:
       - name: dotnet build and publish web app
         run: |
           dotnet restore
-          dotnet build ${{ env.WEBAPP_PROJECT_NAME }} --configuration Debug
-          dotnet publish -c Release -o './${{ env.WEBAPP_PROJECT_NAME }}'
-
-      - name: dotnet build and publish web api
-        run: |
-          dotnet restore
           dotnet build ${{ env.WEBAPI_PROJECT_NAME }} --configuration Debug
           dotnet publish -c Release -o './${{ env.WEBAPI_PROJECT_NAME }}'
 
@@ -82,13 +76,6 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
     
-      - name: Deploy to Azure Web App
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-            app-name: ${{ env.AZURE_WEBAPP_NAME }}
-            package: './${{ env.WEBAPP_PROJECT_NAME }}'
-
       - name: Deploy to Azure Web Api
         id: deploy-to-webapi
         uses: azure/webapps-deploy@v2
