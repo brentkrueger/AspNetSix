@@ -104,7 +104,6 @@ jobs:
 
       - name: Display structure of downloaded files
         run: ls -R
-        working-directory: ${{env.DOTNET_ROOT}}/${{ env.WEBAPP_PROJECT_NAME }}
 
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -120,7 +119,6 @@ jobs:
 
       - name: Display structure of downloaded files
         run: ls -R
-        working-directory: ${{env.DOTNET_ROOT}}/${{ env.WEBAPI_PROJECT_NAME }}
 
       - name: Deploy to Azure Web Api
         id: deploy-to-webapi
