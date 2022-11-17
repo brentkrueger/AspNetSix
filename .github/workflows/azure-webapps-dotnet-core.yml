@@ -64,10 +64,10 @@ jobs:
         run: dotnet publish ./${{ env.WEBAPP_PROJECT_NAME }}/${{ env.WEBAPP_PROJECT_NAME }}.csproj -c Release -o ${{env.DOTNET_ROOT}}/${{ env.WEBAPP_PROJECT_NAME }}
 
       - name: Upload webapp artifact for deployment job
-          uses: actions/upload-artifact@v3
-          with:
-            name: .net-webapp
-            path: ${{env.DOTNET_ROOT}}/${{ env.WEBAPP_PROJECT_NAME }}
+        uses: actions/upload-artifact@v3
+        with:
+          name: .net-webapp
+          path: ${{env.DOTNET_ROOT}}/${{ env.WEBAPP_PROJECT_NAME }}
 
       - name: Build with dotnet
         run: dotnet build ${{ env.WEBAPI_PROJECT_NAME }} --configuration Release
@@ -76,8 +76,8 @@ jobs:
         run: dotnet publish ./${{ env.WEBAPI_PROJECT_NAME }}/${{ env.WEBAPI_PROJECT_NAME }}.csproj -c Release -o ${{env.DOTNET_ROOT}}/${{ env.WEBAPI_PROJECT_NAME }}
 
       - name: Upload webapp artifact for deployment job
-          uses: actions/upload-artifact@v3
-          with:
+        uses: actions/upload-artifact@v3
+        with:
             name: .net-webapi
             path: ${{env.DOTNET_ROOT}}/${{ env.WEBAPI_PROJECT_NAME }}
 
@@ -103,15 +103,15 @@ jobs:
           name: .net-webapp
 
       - name: Deploy to Azure Web App
-          id: deploy-to-webapp
-          uses: azure/webapps-deploy@v2
-          with:
+        id: deploy-to-webapp
+        uses: azure/webapps-deploy@v2
+        with:
             app-name: ${{ env.AZURE_WEBAPP_NAME }}
             package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
       - name: Download artifact from build job
-          uses: actions/download-artifact@v3
-          with:
+        uses: actions/download-artifact@v3
+        with:
             name: .net-webapi
 
       - name: Deploy to Azure Web Api
