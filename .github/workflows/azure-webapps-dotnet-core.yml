@@ -63,20 +63,9 @@ jobs:
             dotnet build ${{ env.WEBAPP_PROJECT_NAME }} --configuration ${{ env.BUILD_CONFIGURATION }}
             dotnet publish -c ${{ env.BUILD_CONFIGURATION }} -o '${{ env.PACKAGE_PATH }}/${{ env.WEBAPP_PROJECT_NAME }}'
 
-  deploy:
-    permissions:
-      contents: none
-    runs-on: ubuntu-latest
-    needs: build
-    environment:
-      name: 'Development'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-
-    steps:
-    
       - uses: azure/login@v1
         with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
+            creds: ${{ secrets.AZURE_CREDENTIALS }}
     
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -87,3 +76,5 @@ jobs:
 
       - name: az cli logout
         run: az logout
+    
+      
