@@ -68,14 +68,14 @@ jobs:
     
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2s
+        uses: azure/webapps-deploy@v2
         with:
             app-name: ${{ env.AZURE_WEBAPP_NAME }}
             package: '${{ env.PACKAGE_PATH }}/${{ env.WEBAPP_PROJECT_NAME }}'
 
       - name: Deploy to Azure Web Api
         id: deploy-to-webapi
-        uses: azure/webapps-deploy@v2s
+        uses: azure/webapps-deploy@v2
         with:
             app-name: ${{ env.AZURE_WEBAPI_NAME }}
             package: '${{ env.PACKAGE_PATH }}/${{ env.WEBAPI_PROJECT_NAME }}'
