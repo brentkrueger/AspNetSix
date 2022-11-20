@@ -38,7 +38,7 @@ permissions:
   contents: read
 
 jobs:
-  build:
+  build-deploy-webapp:
     runs-on: ubuntu-latest
 
     steps:
@@ -57,11 +57,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
-      - name: dotnet build and publish
+      - name: dotnet publish
         run: |
-            dotnet restore
-            dotnet build ${{ env.WEBAPP_PROJECT_NAME }} --configuration ${{ env.BUILD_CONFIGURATION }}
-            dotnet publish -c ${{ env.BUILD_CONFIGURATION }} -o '${{ env.PACKAGE_PATH }}/${{ env.WEBAPP_PROJECT_NAME }}'
+            dotnet publish ${{ env.WEBAPP_PROJECT_NAME }} -c ${{ env.BUILD_CONFIGURATION }} -o '${{ env.PACKAGE_PATH }}/${{ env.WEBAPP_PROJECT_NAME }}'
+            dotnet publish ${{ env.WEBAPI_PROJECT_NAME }} -c ${{ env.BUILD_CONFIGURATION }} -o '${{ env.PACKAGE_PATH }}/${{ env.WEBAPI_PROJECT_NAME }}'
 
       - uses: azure/login@v1
         with:
@@ -69,12 +68,18 @@ jobs:
     
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
+        uses: azure/webapps-deploy@v2s
         with:
             app-name: ${{ env.AZURE_WEBAPP_NAME }}
             package: '${{ env.PACKAGE_PATH }}/${{ env.WEBAPP_PROJECT_NAME }}'
 
+      - name: Deploy to Azure Web Api
+        id: deploy-to-webapi
+        uses: azure/webapps-deploy@v2s
+        with:
+            app-name: ${{ env.AZURE_WEBAPI_NAME }}
+            package: '${{ env.PACKAGE_PATH }}/${{ env.WEBAPI_PROJECT_NAME }}'
+
       - name: az cli logout
         run: az logout
-    
       
