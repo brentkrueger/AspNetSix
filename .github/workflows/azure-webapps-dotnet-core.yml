@@ -11,7 +11,7 @@
 # 2. Create a secret in your repository named AZURE_WEBAPP_PUBLISH_PROFILE, paste the publish profile contents as the value of the secret.
 #    For instructions on obtaining the publish profile see: https://docs.microsoft.com/azure/app-service/deploy-github-actions#configure-the-github-secret
 #
-# 3. Change the value for the AZURE_WEBAPP_NAME. Optionally, change the AZURE_WEBAPP_PACKAGE_PATH and DOTNET_VERSION environment variables below.
+# 3. Change the value for the AZURE_WEBAPP_NAME. Optionally, change the PACKAGE_PATH and DOTNET_VERSION environment variables below.
 #
 # For more information on GitHub Actions for Azure: https://github.com/Azure/Actions
 # For more information on the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
@@ -21,12 +21,12 @@ name: Build and deploy ASP.Net Core 6.0 app to existing Azure App Service
 
 env:
   AZURE_WEBAPP_NAME: AspNetSix-Brent-Sample    # set this to the name of your Azure Web App
-  AZURE_WEBAPP_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   AZURE_WEBAPI_NAME: WebApiSeven-Brent-Sample    # set this to the name of your Azure Web App
-  AZURE_WEBAPI_PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   WEBAPP_PROJECT_NAME: "AspNetSixExample"
   WEBAPI_PROJECT_NAME: "WeatherWebApi"
+  PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '7.0'                 # set this to the .NET Core version to use
+  BUILD_CONFIGURATION: Debug
 
 on:
   push:
@@ -57,30 +57,11 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-nuget-
 
-      - name: Build with dotnet
-        run: dotnet build ${{ env.WEBAPP_PROJECT_NAME }} --configuration Release
-
-      - name: dotnet publish web app
-        run: dotnet publish ./${{ env.WEBAPP_PROJECT_NAME }}/${{ env.WEBAPP_PROJECT_NAME }}.csproj -c Release -o ${{env.DOTNET_ROOT}}/${{ env.WEBAPP_PROJECT_NAME }}
-
-      - name: Upload webapp artifact for deployment job
-        uses: actions/upload-artifact@v3
-        with:
-          name: .net-webapp
-          path: ${{env.DOTNET_ROOT}}/${{ env.WEBAPP_PROJECT_NAME }}
-
-      - name: Build with dotnet
-        run: dotnet build ${{ env.WEBAPI_PROJECT_NAME }} --configuration Release
-
-      - name: dotnet publish webapi
-        run: dotnet publish ./${{ env.WEBAPI_PROJECT_NAME }}/${{ env.WEBAPI_PROJECT_NAME }}.csproj -c Release -o ${{env.DOTNET_ROOT}}/${{ env.WEBAPI_PROJECT_NAME }}
-
-      - name: Upload webapp artifact for deployment job
-        uses: actions/upload-artifact@v3
-        with:
-            name: .net-webapi
-            path: ${{env.DOTNET_ROOT}}/${{ env.WEBAPI_PROJECT_NAME }}
-
+      - name: dotnet build and publish
+        run: |
+            dotnet restore
+            dotnet build ${{ env.WEBAPP_PROJECT_NAME }} --configuration ${{ env.BUILD_CONFIGURATION }}
+            dotnet publish -c ${{ env.BUILD_CONFIGURATION }} -o '${{ env.PACKAGE_PATH }}/${{ env.WEBAPP_PROJECT_NAME }}'
 
   deploy:
     permissions:
@@ -97,35 +78,12 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
     
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-          name: .net-webapp
-
-      - name: Display structure of downloaded files
-        run: ls -R
-
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
             app-name: ${{ env.AZURE_WEBAPP_NAME }}
-            package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+            package: '${{ env.PACKAGE_PATH }}/${{ env.WEBAPP_PROJECT_NAME }}'
 
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v3
-        with:
-            name: .net-webapi
-
-      - name: Display structure of downloaded files
-        run: ls -R
-
-      - name: Deploy to Azure Web Api
-        id: deploy-to-webapi
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: ${{ env.AZURE_WEBAPI_NAME }}
-          package: ${{ env.AZURE_WEBAPI_PACKAGE_PATH }}
-          
       - name: az cli logout
         run: az logout
