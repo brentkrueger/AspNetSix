@@ -1,5 +1,6 @@
 ﻿@page
 @model IndexModel
+@inject AspNetSixExample.Services.IWeatherService WeatherService
 @{
     ViewData["Title"] = "Home page";
 }
@@ -8,4 +9,10 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     <p>Built with @(System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription)</p>
+    @{ var weatherForecast = WeatherService.GetWeatherAsync().Result;}
+    <h2>Current Weather</h2>
+    <p>Date: @(weatherForecast.Date)</p>
+    <p>Temperature: @(weatherForecast.TemperatureF)</p>
+    <p>Summary: @(weatherForecast.Summary)</p>
+
 </div>
