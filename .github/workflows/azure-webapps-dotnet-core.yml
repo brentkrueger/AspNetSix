@@ -22,8 +22,10 @@ name: Build and deploy ASP.Net Core 6.0 app to existing Azure App Service
 env:
   AZURE_WEBAPP_NAME: AspNetSix-Brent-Sample    # set this to the name of your Azure Web App
   AZURE_WEBAPI_NAME: WebApiSeven-Brent-Sample    # set this to the name of your Azure Web App
+  AZURE_IDSERVER_NAME: IdentityServer-Brent-Sample    # set this to the name of your Azure Web App
   WEBAPP_PROJECT_NAME: "AspNetSixExample"
   WEBAPI_PROJECT_NAME: "WeatherWebApi"
+  IDSERVER_PROJECT_NAME: "IdentityServer"
   PACKAGE_PATH: '.'      # set this to the path to your web app project, defaults to the repository root
   DOTNET_VERSION: '7.0'                 # set this to the .NET Core version to use
   BUILD_CONFIGURATION: Debug
@@ -61,6 +63,7 @@ jobs:
         run: |
             dotnet publish ${{ env.WEBAPP_PROJECT_NAME }} -c ${{ env.BUILD_CONFIGURATION }} -o '${{ env.PACKAGE_PATH }}/${{ env.WEBAPP_PROJECT_NAME }}'
             dotnet publish ${{ env.WEBAPI_PROJECT_NAME }} -c ${{ env.BUILD_CONFIGURATION }} -o '${{ env.PACKAGE_PATH }}/${{ env.WEBAPI_PROJECT_NAME }}'
+            dotnet publish ${{ env.IDSERVER_PROJECT_NAME }} -c ${{ env.BUILD_CONFIGURATION }} -o '${{ env.PACKAGE_PATH }}/${{ env.IDSERVER_PROJECT_NAME }}'
 
       - uses: azure/login@v1
         with:
@@ -79,6 +82,13 @@ jobs:
         with:
             app-name: ${{ env.AZURE_WEBAPI_NAME }}
             package: '${{ env.PACKAGE_PATH }}/${{ env.WEBAPI_PROJECT_NAME }}'
+
+      - name: Deploy to Azure Identity Server
+        id: deploy-to-idserver
+        uses: azure/webapps-deploy@v2
+        with:
+            app-name: ${{ env.AZURE_IDSERVER_NAME }}
+            package: '${{ env.PACKAGE_PATH }}/${{ env.IDSERVER_PROJECT_NAME }}'
 
       - name: az cli logout
         run: az logout
