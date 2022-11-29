@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Server.IIS;
-using System.IO;
-using System.Net.Http.Headers;
-
+﻿
 namespace AspNetSixExample.Services
 {
     public class WebApiWeatherService : IWeatherService
@@ -13,17 +10,15 @@ namespace AspNetSixExample.Services
             _httpClient = httpClient;
         }
 
-        public async Task<WeatherForecast> GetWeatherAsync()
+        public async Task<IEnumerable<WeatherForecast>> GetWeatherForecastAsync()
         {
             HttpResponseMessage response = await _httpClient.GetAsync(_httpClient.BaseAddress + "WeatherForecast");
             if (response.IsSuccessStatusCode)
             {
-                IEnumerable<WeatherForecast>? weatherForecast = await response.Content.ReadFromJsonAsync<IEnumerable<WeatherForecast>>();
-
-                return weatherForecast.First();
+                return await response.Content.ReadFromJsonAsync<IEnumerable<WeatherForecast>>();
             }
 
-            throw new Exception("Problem retrieving weather summary");
+            throw new Exception("Problem retrieving weather forecasts");
         }
     }
 }
