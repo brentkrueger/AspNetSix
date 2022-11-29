@@ -23,6 +23,8 @@ internal class Program
 
         builder.Services.AddRazorPages();
 
+        builder.Services.AddApplicationInsightsTelemetry();
+
         ConfigureIdentity(builder);
         ConfigureDI(builder);
         ConfigureAuthentication(builder);
