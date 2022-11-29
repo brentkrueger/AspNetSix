@@ -9,6 +9,7 @@
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
     <p>Built with @(System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription)</p>
+    <p>Build Environment @(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"))</p>
     @{ var weatherForecast = WeatherService.GetWeatherAsync().Result;}
     <h2>Current Weather</h2>
     <p>Date: @(weatherForecast.Date)</p>
