@@ -8,6 +8,9 @@
     "apiAppServiceName": {
       "value": "WebApiSeven-Brent-Sample"
     },
+    "identityServerAppServiceName": {
+      "value": "IdentityServer-Brent-Sample"
+    },
     "serverName": {
       "value": "AspNetSix-Brent-Sample-SqlServer"
     },
