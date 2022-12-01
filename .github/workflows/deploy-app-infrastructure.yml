@@ -7,9 +7,9 @@ on:
   workflow_dispatch:
 
 env:
-  RESOURCE_GROUP_NAME: "AspNetSix"
+  RESOURCE_GROUP_NAME: "Brent-Weather-RG"
   RESOURCE_GROUP_LOCATION: "centralus"
-  AZURE_TENANT_ID: "6567301b-7e83-403a-a15f-56d9dc59f19c"
+  AZURE_TENANT_ID: "221f64a2-dd46-43d9-962d-7b81b54436c1"
 
 jobs:
     build-and-deploy:
@@ -26,7 +26,7 @@ jobs:
           
       - uses: Azure/get-keyvault-secrets@v1
         with: 
-            keyvault: "AspNetSixSharedKeyVault"
+            keyvault: "Brent-Shared"
             secrets: 'SqlServerAdminPassword, SqlServerAdminUsername, SqlServerAADLoginName, SqlServerAADLoginOID'
         id: getSqlSecrets
 
@@ -46,8 +46,7 @@ jobs:
         uses: azure/arm-deploy@v1
         id: deploy
         with:
-          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-          resourceGroupName: ${{ secrets.AZURE_RG }}
+          resourceGroupName: ${{ env.RESOURCE_GROUP_NAME }}
           template: ./Deploy/azuredeploy.json
           parameters: ./Deploy/azuredeploy.parameters.json sqlAdminUsername=${{ steps.getSqlSecrets.outputs.SqlServerAdminUsername }} sqlAdminPassword=${{ steps.getSqlSecrets.outputs.SqlServerAdminPassword }} sqlAADAdminLoginName=${{ steps.getSqlSecrets.outputs.SqlServerAADLoginName }} sqlAADAdminLoginOID=${{ steps.getSqlSecrets.outputs.SqlServerAADLoginOID }}
           
