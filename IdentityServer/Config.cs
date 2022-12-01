@@ -9,18 +9,45 @@ namespace IdentityServer
 {
     public static class Config
     {
+        private const string readerWeatherForecastScopeName = "read:weatherforecast";
+
         public static IEnumerable<IdentityResource> IdentityResources =>
             new IdentityResource[]
             { 
                 new IdentityResources.OpenId()
             };
 
-        public static IEnumerable<ApiScope> ApiScopes =>
-            new ApiScope[]
-            { };
+        public static IEnumerable<ApiScope> ApiScopes
+        {
+            get
+            {
+                return new List<ApiScope>
+                {
+                    new ApiScope(readerWeatherForecastScopeName, "Read Weather Forecasts")
+                };
+            }
+        }
 
         public static IEnumerable<Client> Clients =>
-            new Client[] 
-            { };
+            new List<Client>
+            {
+                new Client
+                {
+                    ClientId = "aspnetWebApp",
+
+                    AllowOfflineAccess = true,
+
+                    // no interactive user, use the clientid/secret for authentication
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+
+                    // secret for authentication
+                    ClientSecrets =
+                    {
+                        new Secret("secret".Sha256()) //todo: pass this in from app settings key vault reference
+                    },
+
+                    AllowedScopes = new List<string>(){ readerWeatherForecastScopeName }
+                }
+            };
     }
 }

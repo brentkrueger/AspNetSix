@@ -3,16 +3,16 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "appServiceName": {
-      "value": "AspNetSix-Brent-Sample"
+      "value": "Brent-WeatherAspNet"
     },
     "apiAppServiceName": {
-      "value": "WebApiSeven-Brent-Sample"
+      "value": "Brent-WeatherWebApi"
     },
     "identityServerAppServiceName": {
-      "value": "IdentityServer-Brent-Sample"
+      "value": "Brent-IdentityServer"
     },
     "serverName": {
-      "value": "AspNetSix-Brent-Sample-SqlServer"
+      "value": "Brent-Sql-Server"
     },
     "sqlAdminPassword": {
       "value": "passedIn"
@@ -21,7 +21,13 @@
       "value": "passedIn"
     },
     "keyVaultName": {
-      "value": "AspNetSixSharedKeyVault"
+      "value": "Brent-Shared-KeyVault"
+    },
+    "WeatherWebApiBaseUrl":{
+      "value": "https://Brent-WeatherWebApi.azurewebsites.net/"
+    },
+    "IdentityServerBaseUrl":{
+      "value": "https://Brent-IdentityServer.azurewebsites.net/"
     }
   }
 }

@@ -73,6 +73,20 @@
       "metadata": {
         "description": "The name of the Key Vault."
       }
+    }, 
+    "WeatherWebApiBaseUrl": {
+      "type": "string",
+      "defaultValue": "fromParametersFile",
+      "metadata": {
+        "description": "Base Url of Weather Api."
+      }
+    },
+    "IdentityServerBaseUrl": {
+      "type": "string",
+      "defaultValue": "fromParametersFile",
+      "metadata": {
+        "description": "Base Url of Identity Server."
+      }
     },
     "sqlAdminPassword": {
       "type": "securestring",
@@ -369,7 +383,9 @@
         "ApplicationInsightsAgent_EXTENSION_VERSION": "~2",
         "XDT_MicrosoftApplicationInsights_Mode": "default",
         "Authentication:Google:ClientId": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientIdSecretRef'), ')')]",
-        "Authentication:Google:ClientSecret": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientSecretSecretRef'), ')')]"
+        "Authentication:Google:ClientSecret": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientSecretSecretRef'), ')')]",
+        "WeatherWebApiBaseUrl": "[parameters('WeatherWebApiBaseUrl')]",
+        "IdentityServerBaseUrl": "[parameters('IdentityServerBaseUrl')]"
       }
     }
   ],

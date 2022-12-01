@@ -1,0 +1,268 @@
+2022-09-03 12:00:29.956 -05:00 [INF] User profile is available. Using 'C:\Users\brent\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-03 12:00:30.682 -05:00 [INF] Now listening on: https://localhost:7152
+2022-09-03 12:00:30.682 -05:00 [INF] Now listening on: http://localhost:5152
+2022-09-03 12:00:30.684 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-03 12:00:30.684 -05:00 [INF] Hosting environment: Development
+2022-09-03 12:00:30.684 -05:00 [INF] Content root path: C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\
+2022-09-03 12:00:32.571 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/ - -
+2022-09-03 12:00:32.658 -05:00 [INF] Executing endpoint '/Index'
+2022-09-03 12:00:32.728 -05:00 [INF] Route matched with {page = "/Index", area = ""}. Executing page /Index
+2022-09-03 12:00:32.738 -05:00 [INF] Executing handler method WeatherAspNet.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-09-03 12:00:32.739 -05:00 [INF] Executed handler method OnGet, returned result .
+2022-09-03 12:00:32.742 -05:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-09-03 12:00:32.742 -05:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-09-03 12:00:33.289 -05:00 [INF] Executed page /Index in 558.0512ms
+2022-09-03 12:00:33.291 -05:00 [INF] Executed endpoint '/Index'
+2022-09-03 12:00:33.364 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/WeatherAspNet.styles.css?v=ltdAXYDkBJAD4PjEKFGog5jTgxJH5MPGP2yDYxccPPo - -
+2022-09-03 12:00:33.364 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/lib/bootstrap/dist/css/bootstrap.min.css - -
+2022-09-03 12:00:33.364 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/lib/jquery/dist/jquery.min.js - -
+2022-09-03 12:00:33.364 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/css/site.css?v=AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL-c - -
+2022-09-03 12:00:33.411 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - -
+2022-09-03 12:00:33.423 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0 - -
+2022-09-03 12:00:33.423 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js - -
+2022-09-03 12:00:33.446 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_vs/browserLink - -
+2022-09-03 12:00:33.448 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/ - - - 200 - text/html;+charset=utf-8 881.3836ms
+2022-09-03 12:00:33.449 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - - - 200 12002 application/javascript;+charset=utf-8 38.2548ms
+2022-09-03 12:00:33.460 -05:00 [INF] The file /lib/bootstrap/dist/js/bootstrap.bundle.min.js was not modified
+2022-09-03 12:00:33.460 -05:00 [INF] The file /js/site.js was not modified
+2022-09-03 12:00:33.460 -05:00 [INF] The file /css/site.css was not modified
+2022-09-03 12:00:33.460 -05:00 [INF] The file /lib/bootstrap/dist/css/bootstrap.min.css was not modified
+2022-09-03 12:00:33.460 -05:00 [INF] The file /lib/jquery/dist/jquery.min.js was not modified
+2022-09-03 12:00:33.460 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0 - - - 304 - application/javascript 37.5079ms
+2022-09-03 12:00:33.460 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/lib/jquery/dist/jquery.min.js - - - 304 - application/javascript 95.9124ms
+2022-09-03 12:00:33.460 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/css/site.css?v=AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL-c - - - 304 - text/css 95.9898ms
+2022-09-03 12:00:33.460 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js - - - 304 - application/javascript 37.9042ms
+2022-09-03 12:00:33.460 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/lib/bootstrap/dist/css/bootstrap.min.css - - - 304 - text/css 95.9897ms
+2022-09-03 12:00:33.466 -05:00 [INF] Sending file. Request path: '/WeatherAspNet.styles.css'. Physical path: 'C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\obj\Debug\net6.0\scopedcss\bundle\WeatherAspNet.styles.css'
+2022-09-03 12:00:33.466 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/WeatherAspNet.styles.css?v=ltdAXYDkBJAD4PjEKFGog5jTgxJH5MPGP2yDYxccPPo - - - 200 1133 text/css 101.6955ms
+2022-09-03 12:00:33.492 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 46.8340ms
+2022-09-03 12:00:33.566 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2022-09-03 12:00:33.582 -05:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2022-09-03 12:00:33.582 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 16.2907ms
+2022-09-03 12:00:33.593 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/favicon.ico - -
+2022-09-03 12:00:33.593 -05:00 [INF] The file /favicon.ico was not modified
+2022-09-03 12:00:33.593 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/favicon.ico - - - 304 - image/x-icon 0.5845ms
+2022-09-03 12:00:35.969 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/Identity/Account/Login - -
+2022-09-03 12:00:35.972 -05:00 [INF] Executing endpoint '/Account/Login'
+2022-09-03 12:00:35.996 -05:00 [INF] Route matched with {page = "/Account/Login", area = "Identity"}. Executing page /Account/Login
+2022-09-03 12:00:36.015 -05:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnGetAsync - ModelState is "Valid"
+2022-09-03 12:00:36.025 -05:00 [INF] AuthenticationScheme: Identity.External signed out.
+2022-09-03 12:00:36.026 -05:00 [INF] Executed handler method OnGetAsync, returned result .
+2022-09-03 12:00:36.026 -05:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-09-03 12:00:36.026 -05:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-09-03 12:00:36.101 -05:00 [INF] Executed page /Account/Login in 104.3119ms
+2022-09-03 12:00:36.101 -05:00 [INF] Executed endpoint '/Account/Login'
+2022-09-03 12:00:36.104 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/Identity/Account/Login - - - 200 - text/html;+charset=utf-8 134.9320ms
+2022-09-03 12:00:36.117 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - -
+2022-09-03 12:00:36.117 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/Identity/lib/jquery-validation/dist/jquery.validate.js - -
+2022-09-03 12:00:36.117 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - -
+2022-09-03 12:00:36.117 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - - - 200 12002 application/javascript;+charset=utf-8 0.2645ms
+2022-09-03 12:00:36.118 -05:00 [INF] The file /Identity/lib/jquery-validation/dist/jquery.validate.js was not modified
+2022-09-03 12:00:36.118 -05:00 [INF] The file /Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js was not modified
+2022-09-03 12:00:36.119 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/Identity/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js - - - 304 - application/javascript 1.3713ms
+2022-09-03 12:00:36.119 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/Identity/lib/jquery-validation/dist/jquery.validate.js - - - 304 - application/javascript 1.3557ms
+2022-09-03 12:00:36.122 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_vs/browserLink - -
+2022-09-03 12:00:36.137 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 14.6733ms
+2022-09-03 12:00:36.148 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2022-09-03 12:00:36.151 -05:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2022-09-03 12:00:36.151 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 3.7311ms
+2022-09-03 12:00:42.981 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7152/Identity/Account/Login application/x-www-form-urlencoded 270
+2022-09-03 12:00:42.987 -05:00 [INF] Executing endpoint '/Account/Login'
+2022-09-03 12:00:42.988 -05:00 [INF] Route matched with {page = "/Account/Login", area = "Identity"}. Executing page /Account/Login
+2022-09-03 12:00:43.011 -05:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnPostAsync - ModelState is "Valid"
+2022-09-03 12:00:43.681 -05:00 [INF] Entity Framework Core 6.0.7 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.7' with options: None
+2022-09-03 12:00:44.049 -05:00 [INF] Executed page /Account/Login in 1061.0083ms
+2022-09-03 12:00:44.049 -05:00 [INF] Executed endpoint '/Account/Login'
+2022-09-03 12:00:44.053 -05:00 [ERR] An unhandled exception has occurred while executing the request.
+System.ArgumentException: Invalid value for key 'authentication'.
+   at Microsoft.Data.Common.DbConnectionStringBuilderUtil.ConvertToAuthenticationType(String keyword, Object value)
+   at Microsoft.Data.SqlClient.SqlConnectionStringBuilder.set_Item(String keyword, Object value)
+   at System.Data.Common.DbConnectionStringBuilder.set_ConnectionString(String value)
+   at Microsoft.EntityFrameworkCore.SqlServer.Storage.Internal.SqlServerConnection.<>c.<get_IsMultipleActiveResultSetsEnabled>b__7_0(String cs)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.EntityFrameworkCore.SqlServer.Query.Internal.SqlServerCompiledQueryCacheKeyGenerator.GenerateCacheKey(Expression query, Boolean async)
+   at Microsoft.EntityFrameworkCore.Query.Internal.QueryCompiler.ExecuteAsync[TResult](Expression query, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.Query.Internal.EntityQueryProvider.ExecuteAsync[TResult](Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, Expression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.ExecuteAsync[TSource,TResult](MethodInfo operatorMethodInfo, IQueryable`1 source, LambdaExpression expression, CancellationToken cancellationToken)
+   at Microsoft.EntityFrameworkCore.EntityFrameworkQueryableExtensions.FirstOrDefaultAsync[TSource](IQueryable`1 source, Expression`1 predicate, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.EntityFrameworkCore.UserOnlyStore`6.FindByNameAsync(String normalizedUserName, CancellationToken cancellationToken)
+   at Microsoft.AspNetCore.Identity.UserManager`1.FindByNameAsync(String userName)
+   at Microsoft.AspNetCore.Identity.SignInManager`1.PasswordSignInAsync(String userName, String password, Boolean isPersistent, Boolean lockoutOnFailure)
+   at Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel`1.OnPostAsync(String returnUrl)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.ExecutorFactory.GenericTaskHandlerMethod.Convert[T](Object taskAsObject)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.ExecutorFactory.GenericTaskHandlerMethod.Execute(Object receiver, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeHandlerMethodAsync()
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeNextPageFilterAsync()
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.Rethrow(PageHandlerExecutedContext context)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeInnerFilterAsync()
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2022-09-03 12:00:44.392 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7152/Identity/Account/Login application/x-www-form-urlencoded 270 - 500 - text/html;+charset=utf-8 1410.4556ms
+2022-09-03 12:00:44.394 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - -
+2022-09-03 12:00:44.395 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_vs/browserLink - -
+2022-09-03 12:00:44.395 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - - - 200 12002 application/javascript;+charset=utf-8 0.4834ms
+2022-09-03 12:00:44.405 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 10.1812ms
+2022-09-03 12:02:14.554 -05:00 [INF] User profile is available. Using 'C:\Users\brent\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-09-03 12:02:14.903 -05:00 [INF] Now listening on: https://localhost:7152
+2022-09-03 12:02:14.903 -05:00 [INF] Now listening on: http://localhost:5152
+2022-09-03 12:02:14.905 -05:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-09-03 12:02:14.905 -05:00 [INF] Hosting environment: Development
+2022-09-03 12:02:14.905 -05:00 [INF] Content root path: C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\
+2022-09-03 12:02:15.742 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/ - -
+2022-09-03 12:02:15.821 -05:00 [INF] Executing endpoint '/Index'
+2022-09-03 12:02:15.856 -05:00 [INF] Route matched with {page = "/Index", area = ""}. Executing page /Index
+2022-09-03 12:02:15.865 -05:00 [INF] Executing handler method WeatherAspNet.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-09-03 12:02:15.867 -05:00 [INF] Executed handler method OnGet, returned result .
+2022-09-03 12:02:15.870 -05:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-09-03 12:02:15.870 -05:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-09-03 12:02:16.314 -05:00 [INF] Executed page /Index in 453.796ms
+2022-09-03 12:02:16.316 -05:00 [INF] Executed endpoint '/Index'
+2022-09-03 12:02:16.354 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - -
+2022-09-03 12:02:16.354 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/WeatherAspNet.styles.css?v=ltdAXYDkBJAD4PjEKFGog5jTgxJH5MPGP2yDYxccPPo - -
+2022-09-03 12:02:16.357 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/ - - - 200 - text/html;+charset=utf-8 618.2828ms
+2022-09-03 12:02:16.361 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - - - 200 12002 application/javascript;+charset=utf-8 7.1551ms
+2022-09-03 12:02:16.375 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_vs/browserLink - -
+2022-09-03 12:02:16.377 -05:00 [INF] Sending file. Request path: '/WeatherAspNet.styles.css'. Physical path: 'C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\obj\Debug\net6.0\scopedcss\bundle\WeatherAspNet.styles.css'
+2022-09-03 12:02:16.377 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/WeatherAspNet.styles.css?v=ltdAXYDkBJAD4PjEKFGog5jTgxJH5MPGP2yDYxccPPo - - - 200 1133 text/css 23.2272ms
+2022-09-03 12:02:16.397 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 22.2120ms
+2022-09-03 12:02:16.470 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2022-09-03 12:02:16.479 -05:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2022-09-03 12:02:16.479 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 8.7199ms
+2022-09-03 12:02:19.238 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/Identity/Account/Login - -
+2022-09-03 12:02:19.241 -05:00 [INF] Executing endpoint '/Account/Login'
+2022-09-03 12:02:19.259 -05:00 [INF] Route matched with {page = "/Account/Login", area = "Identity"}. Executing page /Account/Login
+2022-09-03 12:02:19.310 -05:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnGetAsync - ModelState is "Valid"
+2022-09-03 12:02:19.316 -05:00 [INF] AuthenticationScheme: Identity.External signed out.
+2022-09-03 12:02:19.317 -05:00 [INF] Executed handler method OnGetAsync, returned result .
+2022-09-03 12:02:19.317 -05:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-09-03 12:02:19.317 -05:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-09-03 12:02:19.379 -05:00 [INF] Executed page /Account/Login in 119.6522ms
+2022-09-03 12:02:19.379 -05:00 [INF] Executed endpoint '/Account/Login'
+2022-09-03 12:02:19.380 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/Identity/Account/Login - - - 200 - text/html;+charset=utf-8 142.0502ms
+2022-09-03 12:02:19.389 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/WeatherAspNet.styles.css?v=ltdAXYDkBJAD4PjEKFGog5jTgxJH5MPGP2yDYxccPPo - -
+2022-09-03 12:02:19.390 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - -
+2022-09-03 12:02:19.390 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - - - 200 12002 application/javascript;+charset=utf-8 0.3867ms
+2022-09-03 12:02:19.390 -05:00 [INF] The file /WeatherAspNet.styles.css was not modified
+2022-09-03 12:02:19.390 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/WeatherAspNet.styles.css?v=ltdAXYDkBJAD4PjEKFGog5jTgxJH5MPGP2yDYxccPPo - - - 304 - text/css 1.0179ms
+2022-09-03 12:02:19.393 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_vs/browserLink - -
+2022-09-03 12:02:19.404 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.1759ms
+2022-09-03 12:02:19.410 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2022-09-03 12:02:19.412 -05:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2022-09-03 12:02:19.412 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 2.1164ms
+2022-09-03 12:02:24.123 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7152/Identity/Account/Login application/x-www-form-urlencoded 270
+2022-09-03 12:02:24.129 -05:00 [INF] Executing endpoint '/Account/Login'
+2022-09-03 12:02:24.129 -05:00 [INF] Route matched with {page = "/Account/Login", area = "Identity"}. Executing page /Account/Login
+2022-09-03 12:02:24.149 -05:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnPostAsync - ModelState is "Valid"
+2022-09-03 12:02:24.808 -05:00 [INF] Entity Framework Core 6.0.7 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.7' with options: None
+2022-09-03 12:02:39.079 -05:00 [INF] Executed DbCommand (120ms) [Parameters=[@__normalizedUserName_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(1) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedUserName] = @__normalizedUserName_0
+2022-09-03 12:02:39.122 -05:00 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-09-03 12:02:39.129 -05:00 [INF] Executed page /Account/Login in 14999.4849ms
+2022-09-03 12:02:39.129 -05:00 [INF] Executed endpoint '/Account/Login'
+2022-09-03 12:02:39.139 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7152/Identity/Account/Login application/x-www-form-urlencoded 270 - 200 - text/html;+charset=utf-8 15016.0605ms
+2022-09-03 12:02:39.143 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/WeatherAspNet.styles.css?v=ltdAXYDkBJAD4PjEKFGog5jTgxJH5MPGP2yDYxccPPo - -
+2022-09-03 12:02:39.148 -05:00 [INF] The file /WeatherAspNet.styles.css was not modified
+2022-09-03 12:02:39.149 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/WeatherAspNet.styles.css?v=ltdAXYDkBJAD4PjEKFGog5jTgxJH5MPGP2yDYxccPPo - - - 304 - text/css 5.4510ms
+2022-09-03 12:02:39.149 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - -
+2022-09-03 12:02:39.149 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_vs/browserLink - -
+2022-09-03 12:02:39.149 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - - - 200 12002 application/javascript;+charset=utf-8 0.1722ms
+2022-09-03 12:02:39.152 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 3.5478ms
+2022-09-03 12:02:40.721 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2022-09-03 12:02:40.724 -05:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2022-09-03 12:02:40.724 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 2.5075ms
+2022-09-03 12:02:46.094 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/Identity/Account/ForgotPassword - -
+2022-09-03 12:02:46.095 -05:00 [INF] Executing endpoint '/Account/ForgotPassword'
+2022-09-03 12:02:46.097 -05:00 [INF] Route matched with {page = "/Account/ForgotPassword", area = "Identity"}. Executing page /Account/ForgotPassword
+2022-09-03 12:02:46.097 -05:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-09-03 12:02:46.097 -05:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-09-03 12:02:46.121 -05:00 [INF] Executed page /Account/ForgotPassword in 24.3554ms
+2022-09-03 12:02:46.121 -05:00 [INF] Executed endpoint '/Account/ForgotPassword'
+2022-09-03 12:02:46.122 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/Identity/Account/ForgotPassword - - - 200 - text/html;+charset=utf-8 28.1426ms
+2022-09-03 12:02:46.130 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/WeatherAspNet.styles.css?v=ltdAXYDkBJAD4PjEKFGog5jTgxJH5MPGP2yDYxccPPo - -
+2022-09-03 12:02:46.130 -05:00 [INF] The file /WeatherAspNet.styles.css was not modified
+2022-09-03 12:02:46.131 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - -
+2022-09-03 12:02:46.131 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_vs/browserLink - -
+2022-09-03 12:02:46.131 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/WeatherAspNet.styles.css?v=ltdAXYDkBJAD4PjEKFGog5jTgxJH5MPGP2yDYxccPPo - - - 304 - text/css 0.6477ms
+2022-09-03 12:02:46.131 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - - - 200 12002 application/javascript;+charset=utf-8 0.3345ms
+2022-09-03 12:02:46.143 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 11.7454ms
+2022-09-03 12:02:46.150 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2022-09-03 12:02:46.152 -05:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2022-09-03 12:02:46.152 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 2.2552ms
+2022-09-03 12:03:09.358 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/Identity/Account/Login - -
+2022-09-03 12:03:09.366 -05:00 [INF] Executing endpoint '/Account/Login'
+2022-09-03 12:03:09.367 -05:00 [INF] Route matched with {page = "/Account/Login", area = "Identity"}. Executing page /Account/Login
+2022-09-03 12:03:09.367 -05:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.LoginModel.OnGetAsync - ModelState is "Valid"
+2022-09-03 12:03:09.367 -05:00 [INF] AuthenticationScheme: Identity.External signed out.
+2022-09-03 12:03:09.367 -05:00 [INF] Executed handler method OnGetAsync, returned result .
+2022-09-03 12:03:09.367 -05:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-09-03 12:03:09.367 -05:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-09-03 12:03:09.381 -05:00 [INF] Executed page /Account/Login in 14.1801ms
+2022-09-03 12:03:09.381 -05:00 [INF] Executed endpoint '/Account/Login'
+2022-09-03 12:03:09.383 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/Identity/Account/Login - - - 200 - text/html;+charset=utf-8 24.2452ms
+2022-09-03 12:03:09.395 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - -
+2022-09-03 12:03:09.396 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - - - 200 12002 application/javascript;+charset=utf-8 0.2085ms
+2022-09-03 12:03:09.458 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2022-09-03 12:03:09.460 -05:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2022-09-03 12:03:09.460 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 1.9450ms
+2022-09-03 12:03:12.063 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/Identity/Account/ForgotPassword - -
+2022-09-03 12:03:12.064 -05:00 [INF] Executing endpoint '/Account/ForgotPassword'
+2022-09-03 12:03:12.064 -05:00 [INF] Route matched with {page = "/Account/ForgotPassword", area = "Identity"}. Executing page /Account/ForgotPassword
+2022-09-03 12:03:12.064 -05:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-09-03 12:03:12.064 -05:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-09-03 12:03:12.068 -05:00 [INF] Executed page /Account/ForgotPassword in 3.5118ms
+2022-09-03 12:03:12.068 -05:00 [INF] Executed endpoint '/Account/ForgotPassword'
+2022-09-03 12:03:12.069 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/Identity/Account/ForgotPassword - - - 200 - text/html;+charset=utf-8 5.5670ms
+2022-09-03 12:03:12.077 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/WeatherAspNet.styles.css?v=ltdAXYDkBJAD4PjEKFGog5jTgxJH5MPGP2yDYxccPPo - -
+2022-09-03 12:03:12.078 -05:00 [INF] The file /WeatherAspNet.styles.css was not modified
+2022-09-03 12:03:12.078 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/WeatherAspNet.styles.css?v=ltdAXYDkBJAD4PjEKFGog5jTgxJH5MPGP2yDYxccPPo - - - 304 - text/css 0.5978ms
+2022-09-03 12:03:12.078 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - -
+2022-09-03 12:03:12.078 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_vs/browserLink - -
+2022-09-03 12:03:12.079 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - - - 200 12002 application/javascript;+charset=utf-8 0.1223ms
+2022-09-03 12:03:12.121 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2022-09-03 12:03:12.123 -05:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2022-09-03 12:03:12.123 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 2.1149ms
+2022-09-03 12:03:12.123 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 44.3648ms
+2022-09-03 12:03:14.442 -05:00 [INF] Request starting HTTP/2 POST https://localhost:7152/Identity/Account/ForgotPassword application/x-www-form-urlencoded 219
+2022-09-03 12:03:14.443 -05:00 [INF] Executing endpoint '/Account/ForgotPassword'
+2022-09-03 12:03:14.443 -05:00 [INF] Route matched with {page = "/Account/ForgotPassword", area = "Identity"}. Executing page /Account/ForgotPassword
+2022-09-03 12:03:14.444 -05:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.ForgotPasswordModel.OnPostAsync - ModelState is "Valid"
+2022-09-03 12:03:14.481 -05:00 [INF] Entity Framework Core 6.0.7 initialized 'ApplicationDbContext' using provider 'Microsoft.EntityFrameworkCore.SqlServer:6.0.7' with options: None
+2022-09-03 12:03:14.525 -05:00 [INF] Executed DbCommand (29ms) [Parameters=[@__normalizedEmail_0='?' (Size = 256)], CommandType='"Text"', CommandTimeout='30']
+SELECT TOP(2) [a].[Id], [a].[AccessFailedCount], [a].[ConcurrencyStamp], [a].[Email], [a].[EmailConfirmed], [a].[LockoutEnabled], [a].[LockoutEnd], [a].[NormalizedEmail], [a].[NormalizedUserName], [a].[PasswordHash], [a].[PhoneNumber], [a].[PhoneNumberConfirmed], [a].[SecurityStamp], [a].[TwoFactorEnabled], [a].[UserName]
+FROM [AspNetUsers] AS [a]
+WHERE [a].[NormalizedEmail] = @__normalizedEmail_0
+2022-09-03 12:03:14.528 -05:00 [INF] Executed handler method OnPostAsync, returned result Microsoft.AspNetCore.Mvc.RedirectToPageResult.
+2022-09-03 12:03:14.528 -05:00 [INF] Executing RedirectToPageResult, redirecting to ./ForgotPasswordConfirmation.
+2022-09-03 12:03:14.528 -05:00 [INF] Executed page /Account/ForgotPassword in 85.3565ms
+2022-09-03 12:03:14.528 -05:00 [INF] Executed endpoint '/Account/ForgotPassword'
+2022-09-03 12:03:14.529 -05:00 [INF] Request finished HTTP/2 POST https://localhost:7152/Identity/Account/ForgotPassword application/x-www-form-urlencoded 219 - 302 0 - 86.7232ms
+2022-09-03 12:03:14.532 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/Identity/Account/ForgotPasswordConfirmation - -
+2022-09-03 12:03:14.532 -05:00 [INF] Executing endpoint '/Account/ForgotPasswordConfirmation'
+2022-09-03 12:03:14.533 -05:00 [INF] Route matched with {page = "/Account/ForgotPasswordConfirmation", area = "Identity"}. Executing page /Account/ForgotPasswordConfirmation
+2022-09-03 12:03:14.533 -05:00 [INF] Executing handler method Microsoft.AspNetCore.Identity.UI.V5.Pages.Account.Internal.ForgotPasswordConfirmation.OnGet - ModelState is "Valid"
+2022-09-03 12:03:14.533 -05:00 [INF] Executed handler method OnGet, returned result .
+2022-09-03 12:03:14.533 -05:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-09-03 12:03:14.533 -05:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-09-03 12:03:14.538 -05:00 [INF] Executed page /Account/ForgotPasswordConfirmation in 4.9512ms
+2022-09-03 12:03:14.538 -05:00 [INF] Executed endpoint '/Account/ForgotPasswordConfirmation'
+2022-09-03 12:03:14.539 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/Identity/Account/ForgotPasswordConfirmation - - - 200 - text/html;+charset=utf-8 7.7361ms
+2022-09-03 12:03:14.547 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - -
+2022-09-03 12:03:14.547 -05:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_vs/browserLink - -
+2022-09-03 12:03:14.547 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - - - 200 12002 application/javascript;+charset=utf-8 0.3702ms
+2022-09-03 12:03:14.551 -05:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 4.0474ms
+2022-09-03 12:03:14.560 -05:00 [INF] Request starting HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2022-09-03 12:03:14.562 -05:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2022-09-03 12:03:14.563 -05:00 [INF] Request finished HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 2.0947ms

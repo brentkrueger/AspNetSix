@@ -1,4 +1,11 @@
 
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.Extensions.Options;
+using Microsoft.Identity.Web;
+using Microsoft.IdentityModel.Tokens;
+
 namespace WeatherWebApi;
 
 class Program
@@ -17,6 +24,20 @@ class Program
 
         builder.Services.AddControllers();
 
+        builder.Services.AddAuthentication("Bearer")
+            .AddJwtBearer("Bearer", options =>
+            {
+                options.Authority = "https://localhost:5001";
+
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateAudience = false
+                };
+
+            });
+
+        builder.Services.AddAuthorization();
+
         builder.Services.AddApplicationInsightsTelemetry();
 
         var app = builder.Build();
@@ -28,11 +49,17 @@ class Program
             app.UseSwaggerUI();
         }
 
-        app.UseHttpsRedirection();
+        app.UseRouting();
 
+        app.UseAuthentication();
         app.UseAuthorization();
 
-        app.MapControllers();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers();
+        });
+
+        app.UseHttpsRedirection();
 
         app.Run();
     }

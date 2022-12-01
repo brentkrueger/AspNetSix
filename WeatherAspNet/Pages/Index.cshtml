@@ -1,0 +1,22 @@
+﻿@page
+@model IndexModel
+@inject WeatherAspNet.Services.IWeatherService WeatherService
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Built with @(System.Runtime.InteropServices.RuntimeInformation.FrameworkDescription)</p>
+    <p>Build Environment: @(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "(Not Set)")</p>
+    @{ var weatherForecasts = WeatherService.GetWeatherForecastAsync().Result;}
+    <h2>Current Forecasts</h2>
+    @foreach(var weatherForecast in weatherForecasts)
+    {
+        <p>Date: @weatherForecast.Date</p>
+        <p>Temperature: @(weatherForecast.TemperatureF)</p>
+        <p>Summary: @(weatherForecast.Summary)</p>
+        <hr/>
+    }
+
+</div>

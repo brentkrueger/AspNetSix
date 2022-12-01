@@ -1,0 +1,138 @@
+2022-11-21 18:00:23.505 -06:00 [INF] User profile is available. Using 'C:\Users\brent\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-11-21 18:00:23.803 -06:00 [INF] Creating key {0aa20f90-4083-4d95-b69e-05e56fbbbfa2} with creation date 2022-11-22 00:00:23Z, activation date 2022-11-22 00:00:23Z, and expiration date 2023-02-20 00:00:23Z.
+2022-11-21 18:00:23.812 -06:00 [INF] Writing data to file 'C:\Users\brent\AppData\Local\ASP.NET\DataProtection-Keys\key-0aa20f90-4083-4d95-b69e-05e56fbbbfa2.xml'.
+2022-11-21 18:00:24.017 -06:00 [INF] Now listening on: https://localhost:7152
+2022-11-21 18:00:24.017 -06:00 [INF] Now listening on: http://localhost:5152
+2022-11-21 18:00:24.018 -06:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-11-21 18:00:24.018 -06:00 [INF] Hosting environment: Development
+2022-11-21 18:00:24.018 -06:00 [INF] Content root path: C:\Users\brent\source\repos\AspNetSix\WeatherAspNet
+2022-11-21 18:00:25.640 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7152/ - -
+2022-11-21 18:00:25.772 -06:00 [INF] Executing endpoint '/Index'
+2022-11-21 18:00:25.824 -06:00 [INF] Route matched with {page = "/Index", area = ""}. Executing page /Index
+2022-11-21 18:00:25.830 -06:00 [INF] Executing handler method WeatherAspNet.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-11-21 18:00:25.831 -06:00 [INF] Executed handler method OnGet, returned result .
+2022-11-21 18:00:25.832 -06:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-11-21 18:00:25.832 -06:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-11-21 18:00:25.837 -06:00 [INF] Executed page /Index in 11.1464ms
+2022-11-21 18:00:25.838 -06:00 [INF] Executed endpoint '/Index'
+2022-11-21 18:00:25.840 -06:00 [ERR] An unhandled exception has occurred while executing the request.
+System.InvalidOperationException: No service for type 'WeatherAspNet.Services.IWeatherService' has been registered.
+   at Microsoft.Extensions.DependencyInjection.ServiceProviderServiceExtensions.GetRequiredService(IServiceProvider provider, Type serviceType)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorPagePropertyActivator.<>c__DisplayClass8_0.<CreateActivateInfo>b__1(ViewContext context)
+   at Microsoft.Extensions.Internal.PropertyActivator`1.Activate(Object instance, TContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorPagePropertyActivator.Activate(Object page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.DefaultPageFactoryProvider.<>c__DisplayClass4_0.<CreatePageFactory>b__0(PageContext pageContext, ViewContext viewContext)
+   at Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure.PageActionInvoker.InvokeResultAsync(IActionResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeNextResultFilterAsync[TFilter,TFilterAsync]()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2022-11-21 18:00:26.093 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7152/ - - - 500 - text/html;+charset=utf-8 455.1728ms
+2022-11-21 18:00:26.100 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_vs/browserLink - -
+2022-11-21 18:00:26.100 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - -
+2022-11-21 18:00:26.112 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - - - 200 12002 application/javascript;+charset=utf-8 12.1043ms
+2022-11-21 18:00:26.164 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 63.7637ms
+2022-11-21 18:00:26.594 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7152/favicon.ico - -
+2022-11-21 18:00:26.607 -06:00 [INF] The file /favicon.ico was not modified
+2022-11-21 18:00:26.608 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7152/favicon.ico - - - 304 - image/x-icon 13.4774ms
+2022-11-21 18:01:28.324 -06:00 [INF] User profile is available. Using 'C:\Users\brent\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-11-21 18:01:28.588 -06:00 [INF] Now listening on: https://localhost:7152
+2022-11-21 18:01:28.589 -06:00 [INF] Now listening on: http://localhost:5152
+2022-11-21 18:01:28.590 -06:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-11-21 18:01:28.590 -06:00 [INF] Hosting environment: Development
+2022-11-21 18:01:28.590 -06:00 [INF] Content root path: C:\Users\brent\source\repos\AspNetSix\WeatherAspNet
+2022-11-21 18:01:29.679 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7152/ - -
+2022-11-21 18:01:29.738 -06:00 [INF] Executing endpoint '/Index'
+2022-11-21 18:01:29.840 -06:00 [INF] Route matched with {page = "/Index", area = ""}. Executing page /Index
+2022-11-21 18:01:29.847 -06:00 [INF] Executing handler method WeatherAspNet.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-11-21 18:01:29.849 -06:00 [INF] Executed handler method OnGet, returned result .
+2022-11-21 18:01:29.852 -06:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-11-21 18:01:29.852 -06:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-11-21 18:01:29.927 -06:00 [INF] Executed page /Index in 84.317ms
+2022-11-21 18:01:29.928 -06:00 [INF] Executed endpoint '/Index'
+2022-11-21 18:01:29.929 -06:00 [ERR] An unhandled exception has occurred while executing the request.
+System.NotImplementedException: The method or operation is not implemented.
+   at WeatherAspNet.Services.WebApiWeatherService.GetWeather() in C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\Services\WeatherService.cs:line 7
+   at WeatherAspNet.Pages.Pages_Index.ExecuteAsync() in C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\Pages\Index.cshtml:line 12
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageCoreAsync(IRazorPage page, ViewContext context)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderPageAsync(IRazorPage page, ViewContext context, Boolean invokeViewStarts)
+   at Microsoft.AspNetCore.Mvc.Razor.RazorView.RenderAsync(ViewContext context)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.ViewFeatures.ViewExecutor.ExecuteAsync(ViewContext viewContext, String contentType, Nullable`1 statusCode)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeResultAsync>g__Logged|22_0(ResourceInvoker invoker, IActionResult result)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResultFilterAsync>g__Awaited|30_0[TFilter,TFilterAsync](ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResultExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.ResultNext[TFilter,TFilterAsync](State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeResultFilters()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeNextResourceFilter>g__Awaited|25_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Rethrow(ResourceExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.InvokeFilterPipelineAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddlewareImpl.Invoke(HttpContext context)
+2022-11-21 18:01:30.061 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7152/ - - - 500 - text/html;+charset=utf-8 384.2874ms
+2022-11-21 18:01:30.068 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - -
+2022-11-21 18:01:30.068 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_vs/browserLink - -
+2022-11-21 18:01:30.097 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - - - 200 12002 application/javascript;+charset=utf-8 28.0914ms
+2022-11-21 18:01:30.125 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 57.0403ms
+2022-11-21 18:01:50.208 -06:00 [INF] User profile is available. Using 'C:\Users\brent\AppData\Local\ASP.NET\DataProtection-Keys' as key repository and Windows DPAPI to encrypt keys at rest.
+2022-11-21 18:01:50.473 -06:00 [INF] Now listening on: https://localhost:7152
+2022-11-21 18:01:50.473 -06:00 [INF] Now listening on: http://localhost:5152
+2022-11-21 18:01:50.474 -06:00 [INF] Application started. Press Ctrl+C to shut down.
+2022-11-21 18:01:50.474 -06:00 [INF] Hosting environment: Development
+2022-11-21 18:01:50.474 -06:00 [INF] Content root path: C:\Users\brent\source\repos\AspNetSix\WeatherAspNet
+2022-11-21 18:01:51.500 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7152/ - -
+2022-11-21 18:01:51.562 -06:00 [INF] Executing endpoint '/Index'
+2022-11-21 18:01:51.593 -06:00 [INF] Route matched with {page = "/Index", area = ""}. Executing page /Index
+2022-11-21 18:01:51.599 -06:00 [INF] Executing handler method WeatherAspNet.Pages.IndexModel.OnGet - ModelState is "Valid"
+2022-11-21 18:01:51.601 -06:00 [INF] Executed handler method OnGet, returned result .
+2022-11-21 18:01:51.603 -06:00 [INF] Executing an implicit handler method - ModelState is "Valid"
+2022-11-21 18:01:51.603 -06:00 [INF] Executed an implicit handler method, returned result Microsoft.AspNetCore.Mvc.RazorPages.PageResult.
+2022-11-21 18:01:51.971 -06:00 [INF] Executed page /Index in 375.8413ms
+2022-11-21 18:01:51.971 -06:00 [INF] Executed endpoint '/Index'
+2022-11-21 18:01:51.984 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7152/ - - - 200 - text/html;+charset=utf-8 486.0035ms
+2022-11-21 18:01:51.993 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7152/WeatherAspNet.styles.css?v=ltdAXYDkBJAD4PjEKFGog5jTgxJH5MPGP2yDYxccPPo - -
+2022-11-21 18:01:51.993 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - -
+2022-11-21 18:01:51.993 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7152/lib/bootstrap/dist/css/bootstrap.min.css - -
+2022-11-21 18:01:51.993 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7152/lib/jquery/dist/jquery.min.js - -
+2022-11-21 18:01:51.993 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js - -
+2022-11-21 18:01:51.997 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7152/css/site.css?v=AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL-c - -
+2022-11-21 18:01:52.000 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7152/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0 - -
+2022-11-21 18:01:52.027 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_framework/aspnetcore-browser-refresh.js - - - 200 12002 application/javascript;+charset=utf-8 34.0424ms
+2022-11-21 18:01:52.028 -06:00 [INF] The file /lib/bootstrap/dist/js/bootstrap.bundle.min.js was not modified
+2022-11-21 18:01:52.028 -06:00 [INF] The file /lib/jquery/dist/jquery.min.js was not modified
+2022-11-21 18:01:52.028 -06:00 [INF] The file /js/site.js was not modified
+2022-11-21 18:01:52.028 -06:00 [INF] The file /lib/bootstrap/dist/css/bootstrap.min.css was not modified
+2022-11-21 18:01:52.028 -06:00 [INF] The file /css/site.css was not modified
+2022-11-21 18:01:52.028 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js - - - 304 - text/javascript 35.0428ms
+2022-11-21 18:01:52.028 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7152/lib/bootstrap/dist/css/bootstrap.min.css - - - 304 - text/css 35.0779ms
+2022-11-21 18:01:52.028 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7152/js/site.js?v=4q1jwFhaPaZgr8WAUSrux6hAuh0XDg9kPS3xIVq36I0 - - - 304 - text/javascript 28.7514ms
+2022-11-21 18:01:52.028 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7152/lib/jquery/dist/jquery.min.js - - - 304 - text/javascript 35.1082ms
+2022-11-21 18:01:52.028 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7152/css/site.css?v=AKvNjO3dCPPS0eSU1Ez8T2wI280i08yGycV9ndytL-c - - - 304 - text/css 35.0787ms
+2022-11-21 18:01:52.031 -06:00 [INF] Sending file. Request path: '/WeatherAspNet.styles.css'. Physical path: 'C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\obj\Debug\net7.0\scopedcss\bundle\WeatherAspNet.styles.css'
+2022-11-21 18:01:52.031 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7152/WeatherAspNet.styles.css?v=ltdAXYDkBJAD4PjEKFGog5jTgxJH5MPGP2yDYxccPPo - - - 200 1133 text/css 37.6486ms
+2022-11-21 18:01:52.370 -06:00 [INF] Request starting HTTP/2 GET https://localhost:7152/_vs/browserLink - -
+2022-11-21 18:01:52.401 -06:00 [INF] Request finished HTTP/2 GET https://localhost:7152/_vs/browserLink - - - 200 - text/javascript;+charset=UTF-8 31.0106ms
+2022-11-21 18:01:52.462 -06:00 [INF] Request starting HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - -
+2022-11-21 18:01:52.484 -06:00 [INF] Sending file. Request path: '/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map'. Physical path: 'C:\Users\brent\source\repos\AspNetSix\WeatherAspNet\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map'
+2022-11-21 18:01:52.484 -06:00 [INF] Request finished HTTP/1.1 GET https://localhost:7152/lib/bootstrap/dist/js/bootstrap.bundle.min.js.map - - - 200 327261 text/plain 21.9188ms
