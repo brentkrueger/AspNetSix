@@ -26,7 +26,7 @@ jobs:
           
       - uses: Azure/get-keyvault-secrets@v1
         with: 
-            keyvault: "Brent-Shared"
+            keyvault: "Brent-Shared-Keyvault"
             secrets: 'SqlServerAdminPassword, SqlServerAdminUsername, SqlServerAADLoginName, SqlServerAADLoginOID'
         id: getSqlSecrets
 
@@ -48,7 +48,7 @@ jobs:
         with:
           resourceGroupName: ${{ env.RESOURCE_GROUP_NAME }}
           template: ./Deploy/azuredeploy.json
-          parameters: ./Deploy/azuredeploy.parameters.json sqlAdminUsername=${{ steps.getSqlSecrets.outputs.SqlServerAdminUsername }} sqlAdminPassword=${{ steps.getSqlSecrets.outputs.SqlServerAdminPassword }} sqlAADAdminLoginName=${{ steps.getSqlSecrets.outputs.SqlServerAADLoginName }} sqlAADAdminLoginOID=${{ steps.getSqlSecrets.outputs.SqlServerAADLoginOID }}
+          parameters: ./Deploy/azuredeploy.parameters.json sqlAdminUsername=${{ steps.getSqlSecrets.outputs.SqlServerAdminUsername }} sqlAdminPassword=${{ steps.getSqlSecrets.outputs.SqlServerAdminPassword }}
           
       - name: Give App Service, secret read permission on Key Vault
         uses: Azure/CLI@v1

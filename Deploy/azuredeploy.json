@@ -99,18 +99,6 @@
       "metadata": {
         "description": "Password for local admin account."
       }
-    },
-    "sqlAADAdminLoginName": {
-      "type": "securestring",
-      "metadata": {
-        "description": "Name of AAD login user/group"
-      }
-    },
-    "sqlAADAdminLoginOID": {
-      "type": "securestring",
-      "metadata": {
-        "description": "OID of AAD login user/group."
-      }
     }
   },
   "variables": {
@@ -179,20 +167,6 @@
       "properties": {
         "startIpAddress": "0.0.0.0",
         "endIpAddress": "0.0.0.0"
-      }
-    },
-    {
-      "type": "Microsoft.Sql/servers/administrators",
-      "apiVersion": "2019-06-01-preview",
-      "name": "[concat(parameters('serverName'), '/ActiveDirectory')]",
-      "dependsOn": [
-        "[resourceId('Microsoft.Sql/servers', parameters('serverName'))]"
-      ],
-      "properties": {
-        "administratorType": "ActiveDirectory",
-        "login": "[parameters('sqlAADAdminLoginName')]",
-        "sid": "[parameters('sqlAADAdminLoginOID')]",
-        "tenantId": "[subscription().tenantId]"
       }
     },
     {
