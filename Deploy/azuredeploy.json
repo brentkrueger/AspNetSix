@@ -127,7 +127,7 @@
     "keyVault_secretUriRoot": "[concat('https://', parameters('keyVaultName'), '.vault.azure.net/secrets/')]",
     "keyVaultAuthGoogleClientIdSecretRef": "[concat(variables('keyVault_secretUriRoot'), 'Authentication-Google-ClientId/')]",
     "keyVaultAuthGoogleClientSecretSecretRef": "[concat(variables('keyVault_secretUriRoot'), 'Authentication-Google-ClientSecret/')]",
-        "workspaceName": "aspnet-example-workspace"
+      "workspaceName": "weather-workspace"
   },
   "resources": [
     {
