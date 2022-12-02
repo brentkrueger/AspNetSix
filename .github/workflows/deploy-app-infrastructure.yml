@@ -27,7 +27,7 @@ jobs:
       - uses: Azure/get-keyvault-secrets@v1
         with: 
             keyvault: "Brent-Shared-Keyvault"
-            secrets: 'SqlServerAdminPassword, SqlServerAdminUsername, SqlServerAADLoginName, SqlServerAADLoginOID'
+            secrets: 'SqlServerAdminPassword, SqlServerAdminUsername'
         id: getSqlSecrets
 
       - name: Create resource group if not exists
