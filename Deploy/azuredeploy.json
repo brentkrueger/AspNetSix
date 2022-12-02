@@ -62,7 +62,7 @@
     },
     "sqlDBName": {
       "type": "string",
-      "defaultValue": "AspNetSixIdentity",
+      "defaultValue": "AspNetIdentity",
       "metadata": {
         "description": "The name of the SQL Database."
       }
