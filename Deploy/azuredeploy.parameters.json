@@ -3,13 +3,13 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "appServiceName": {
-      "value": "Brent-WeatherAspNet"
+      "value": "Brent-WeatherAspNet-Dev"
     },
     "apiAppServiceName": {
-      "value": "Brent-WeatherWebApi"
+      "value": "Brent-WeatherWebApi-Dev"
     },
     "identityServerAppServiceName": {
-      "value": "Brent-IdentityServer"
+      "value": "Brent-IdentityServer-Dev"
     },
     "serverName": {
       "value": "Brent-Sql-Server"

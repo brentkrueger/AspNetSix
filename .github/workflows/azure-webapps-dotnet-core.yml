@@ -20,9 +20,9 @@
 name: Build and deploy ASP.Net Core 6.0 app to existing Azure App Service
 
 env:
-  AZURE_WEBAPP_NAME: Brent-WeatherAspNet    # set this to the name of your Azure Web App
-  AZURE_WEBAPI_NAME: Brent-WeatherWebApi    # set this to the name of your Azure Web App
-  AZURE_IDSERVER_NAME: Brent-IdentityServer    # set this to the name of your Azure Web App
+  AZURE_WEBAPP_NAME: Brent-WeatherAspNet-Dev    # set this to the name of your Azure Web App
+  AZURE_WEBAPI_NAME: Brent-WeatherWebApi-Dev    # set this to the name of your Azure Web App
+  AZURE_IDSERVER_NAME: Brent-IdentityServer-Dev    # set this to the name of your Azure Web App
   WEBAPP_PROJECT_NAME: "WeatherAspNet"
   WEBAPI_PROJECT_NAME: "WeatherWebApi"
   IDSERVER_PROJECT_NAME: "IdentityServer"
