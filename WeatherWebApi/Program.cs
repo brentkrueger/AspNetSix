@@ -27,7 +27,7 @@ class Program
         builder.Services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>
             {
-                options.Authority = "https://localhost:5001";
+                options.Authority = builder.Configuration["IdentityServerAuthority"];
 
                 options.TokenValidationParameters = new TokenValidationParameters
                 {

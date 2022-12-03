@@ -69,7 +69,7 @@ internal class Program
         {
             Address = new string(builder.Configuration["IdentityServerBaseUrl"] + "connect/token"),
             ClientId = "aspnetWebApp",
-            ClientSecret = "secret", //todo: pass this in from app settings key vault reference
+            ClientSecret = builder.Configuration["AspnetWebAppClientSecret"],
             Scope = "read:weatherforecast"
         });
 

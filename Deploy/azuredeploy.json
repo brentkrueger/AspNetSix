@@ -127,6 +127,7 @@
     "keyVault_secretUriRoot": "[concat('https://', parameters('keyVaultName'), '.vault.azure.net/secrets/')]",
     "keyVaultAuthGoogleClientIdSecretRef": "[concat(variables('keyVault_secretUriRoot'), 'Authentication-Google-ClientId/')]",
     "keyVaultAuthGoogleClientSecretSecretRef": "[concat(variables('keyVault_secretUriRoot'), 'Authentication-Google-ClientSecret/')]",
+    "keyVaultAspNetWebAppClientSecret": "[concat(variables('keyVault_secretUriRoot'), 'aspnetWebAppClientSecret/')]",
       "workspaceName": "weather-workspace"
   },
   "resources": [
@@ -246,7 +247,8 @@
         "ApplicationInsightsAgent_EXTENSION_VERSION": "~2",
         "XDT_MicrosoftApplicationInsights_Mode": "default",
         "Authentication:Google:ClientId": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientIdSecretRef'), ')')]",
-        "Authentication:Google:ClientSecret": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientSecretSecretRef'), ')')]"
+        "Authentication:Google:ClientSecret": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientSecretSecretRef'), ')')]",
+        "AspnetWebAppClientSecret": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAspNetWebAppClientSecret'), ')')]"
       }
     },
     {
@@ -304,7 +306,8 @@
         "ApplicationInsightsAgent_EXTENSION_VERSION": "~2",
         "XDT_MicrosoftApplicationInsights_Mode": "default",
         "Authentication:Google:ClientId": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientIdSecretRef'), ')')]",
-        "Authentication:Google:ClientSecret": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientSecretSecretRef'), ')')]"
+        "Authentication:Google:ClientSecret": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientSecretSecretRef'), ')')]",
+        "IdentityServerAuthority": "[reference(concat('https://',parameters('appServiceName'),'.azurewebsites.net'))]"
       }
     },
     {
@@ -350,7 +353,8 @@
         "Authentication:Google:ClientId": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientIdSecretRef'), ')')]",
         "Authentication:Google:ClientSecret": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientSecretSecretRef'), ')')]",
         "WeatherWebApiBaseUrl": "[parameters('WeatherWebApiBaseUrl')]",
-        "IdentityServerBaseUrl": "[parameters('IdentityServerBaseUrl')]"
+        "IdentityServerBaseUrl": "[parameters('IdentityServerBaseUrl')]",
+        "AspnetWebAppClientSecret": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAspNetWebAppClientSecret'), ')')]"
       }
     }
   ],

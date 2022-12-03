@@ -43,7 +43,7 @@ namespace IdentityServer
                     // secret for authentication
                     ClientSecrets =
                     {
-                        new Secret("secret".Sha256()) //todo: pass this in from app settings key vault reference
+                        new Secret( Startup.StaticConfig["AspnetWebAppClientSecret"].Sha256())
                     },
 
                     AllowedScopes = new List<string>(){ readerWeatherForecastScopeName }
