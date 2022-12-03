@@ -376,9 +376,17 @@
       "type": "string",
       "value": "[parameters('appServiceName')]"
     },
-    "appServiceObjectId": {
+    "webAppServiceObjectId": {
       "type": "string",
       "value": "[reference(resourceId('Microsoft.Web/sites', parameters('appServiceName')), '2019-08-01', 'full').identity.principalId]"
+    },
+    "webApiAppServiceObjectId": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Web/sites', parameters('apiAppServiceName')), '2019-08-01', 'full').identity.principalId]"
+    },
+    "identityServerAppServiceObjectId": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Web/sites', parameters('identityServerAppServiceName')), '2019-08-01', 'full').identity.principalId]"
     }
   }
 }
