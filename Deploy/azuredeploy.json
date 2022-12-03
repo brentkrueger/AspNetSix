@@ -122,7 +122,7 @@
         ]
       }
     },
-    "defaultConnectionString": "[concat('Server=tcp:', parameters('serverName'), '.database.windows.net;Database=', parameters('sqlDBName'), ';Authentication=Active Directory Default;')]",
+    "defaultConnectionString": "[concat(variables('keyVault_secretUriRoot'), 'AspNetWeatherConnectionString/')]",
     "appInsightsName": "[concat(parameters('appServiceName'), '-AppInsights')]",
     "keyVault_secretUriRoot": "[concat('https://', parameters('keyVaultName'), '.vault.azure.net/secrets/')]",
     "keyVaultAuthGoogleClientIdSecretRef": "[concat(variables('keyVault_secretUriRoot'), 'Authentication-Google-ClientId/')]",
@@ -210,9 +210,6 @@
       "apiVersion": "2020-06-01",
       "name": "[parameters('appServiceName')]",
       "location": "[parameters('location')]",
-      "identity": {
-        "type": "SystemAssigned"
-      },
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
       ],
@@ -271,9 +268,6 @@
       "apiVersion": "2020-06-01",
       "name": "[parameters('apiAppServiceName')]",
       "location": "[parameters('location')]",
-      "identity": {
-        "type": "SystemAssigned"
-      },
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
       ],
@@ -318,9 +312,6 @@
       "apiVersion": "2020-06-01",
       "name": "[parameters('identityServerAppServiceName')]",
       "location": "[parameters('location')]",
-      "identity": {
-        "type": "SystemAssigned"
-      },
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
       ],
