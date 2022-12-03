@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 using Microsoft.Identity.Web;
+using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Serilog;
 
@@ -24,6 +25,8 @@ class Program
         builder.Services.AddSwaggerGen();
 
         builder.Services.AddControllers();
+
+        IdentityModelEventSource.ShowPII = true; //Add this line
 
         builder.Host.UseSerilog((ctx, lc) => lc
             .WriteTo.File("logs\\log.txt", rollingInterval: RollingInterval.Month));
