@@ -311,8 +311,6 @@
         "APPLICATIONINSIGHTS_CONNECTION_STRING": "[reference(concat('Microsoft.Insights/components/', variables('appInsightsName'))).ConnectionString]",
         "ApplicationInsightsAgent_EXTENSION_VERSION": "~2",
         "XDT_MicrosoftApplicationInsights_Mode": "default",
-        "Authentication:Google:ClientId": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientIdSecretRef'), ')')]",
-        "Authentication:Google:ClientSecret": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientSecretSecretRef'), ')')]",
         "IdentityServerAuthority": "[concat('https://',parameters('appServiceName'),'.azurewebsites.net')]"
       }
     },
@@ -359,8 +357,6 @@
         "APPLICATIONINSIGHTS_CONNECTION_STRING": "[reference(concat('Microsoft.Insights/components/', variables('appInsightsName'))).ConnectionString]",
         "ApplicationInsightsAgent_EXTENSION_VERSION": "~2",
         "XDT_MicrosoftApplicationInsights_Mode": "default",
-        "Authentication:Google:ClientId": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientIdSecretRef'), ')')]",
-        "Authentication:Google:ClientSecret": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientSecretSecretRef'), ')')]",
         "WeatherWebApiBaseUrl": "[parameters('WeatherWebApiBaseUrl')]",
         "IdentityServerBaseUrl": "[parameters('IdentityServerBaseUrl')]",
         "AspnetWebAppClientSecret": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAspNetWebAppClientSecret'), ')')]"
