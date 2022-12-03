@@ -14,7 +14,7 @@ internal class Program
         var builder = WebApplication.CreateBuilder(args);
 
         builder.Host.UseSerilog((ctx, lc) => lc
-            .WriteTo.File("log.txt", rollingInterval: RollingInterval.Day));
+            .WriteTo.File("logs\\log.txt", rollingInterval: RollingInterval.Month));
 
         // Add services to the container.
         var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");

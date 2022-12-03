@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.Extensions.Options;
 using Microsoft.Identity.Web;
 using Microsoft.IdentityModel.Tokens;
+using Serilog;
 
 namespace WeatherWebApi;
 
@@ -23,6 +24,9 @@ class Program
         builder.Services.AddSwaggerGen();
 
         builder.Services.AddControllers();
+
+        builder.Host.UseSerilog((ctx, lc) => lc
+            .WriteTo.File("logs\\log.txt", rollingInterval: RollingInterval.Month));
 
         builder.Services.AddAuthentication("Bearer")
             .AddJwtBearer("Bearer", options =>

@@ -51,7 +51,8 @@ namespace IdentityServer
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
-                .UseSerilog()
+            .UseSerilog((ctx, lc) => lc
+            .WriteTo.File("logs\\log.txt", rollingInterval: RollingInterval.Month))
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
