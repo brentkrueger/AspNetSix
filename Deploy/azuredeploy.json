@@ -211,6 +211,9 @@
       "apiVersion": "2020-06-01",
       "name": "[parameters('appServiceName')]",
       "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
       ],
@@ -270,6 +273,9 @@
       "apiVersion": "2020-06-01",
       "name": "[parameters('apiAppServiceName')]",
       "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
       ],
@@ -315,6 +321,9 @@
       "apiVersion": "2020-06-01",
       "name": "[parameters('identityServerAppServiceName')]",
       "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
       "dependsOn": [
         "[resourceId('Microsoft.Web/serverfarms', variables('appServicePlanPortalName'))]"
       ],
@@ -366,6 +375,10 @@
     "appServiceName": {
       "type": "string",
       "value": "[parameters('appServiceName')]"
+    },
+    "appServiceObjectId": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Web/sites', parameters('appServiceName')), '2019-08-01', 'full').identity.principalId]"
     }
   }
 }
