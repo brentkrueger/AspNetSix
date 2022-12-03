@@ -122,7 +122,7 @@
         ]
       }
     },
-    "defaultConnectionString": "[concat(variables('keyVault_secretUriRoot'), 'AspNetWeatherConnectionString/')]",
+    "defaultConnectionStringSecretRef": "[concat(variables('keyVault_secretUriRoot'), 'AspNetWeatherConnectionString/')]",
     "appInsightsName": "[concat(parameters('appServiceName'), '-AppInsights')]",
     "keyVault_secretUriRoot": "[concat('https://', parameters('keyVaultName'), '.vault.azure.net/secrets/')]",
     "keyVaultAuthGoogleClientIdSecretRef": "[concat(variables('keyVault_secretUriRoot'), 'Authentication-Google-ClientId/')]",
@@ -260,7 +260,7 @@
       ],
       "properties": {
         "DefaultConnection": {
-          "value": "[variables('defaultConnectionString')]",
+          "value": "[concat('@Microsoft.KeyVault(SecretUri=', variables('defaultConnectionStringSecretRef'), ')')]",
           "type": "SQLAzure"
         }
       }
@@ -307,7 +307,7 @@
         "XDT_MicrosoftApplicationInsights_Mode": "default",
         "Authentication:Google:ClientId": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientIdSecretRef'), ')')]",
         "Authentication:Google:ClientSecret": "[concat('@Microsoft.KeyVault(SecretUri=', variables('keyVaultAuthGoogleClientSecretSecretRef'), ')')]",
-        "IdentityServerAuthority": "[reference(concat('https://',parameters('appServiceName'),'.azurewebsites.net'))]"
+        "IdentityServerAuthority": "[concat('https://',parameters('appServiceName'),'.azurewebsites.net')]"
       }
     },
     {
