@@ -313,7 +313,7 @@
         "APPLICATIONINSIGHTS_CONNECTION_STRING": "[reference(concat('Microsoft.Insights/components/', variables('appInsightsName'))).ConnectionString]",
         "ApplicationInsightsAgent_EXTENSION_VERSION": "~2",
         "XDT_MicrosoftApplicationInsights_Mode": "default",
-        "IdentityServerAuthority": "[concat('https://',parameters('appServiceName'),'.azurewebsites.net')]"
+        "IdentityServerAuthority": "[concat('https://',parameters('identityServerAppServiceName'),'.azurewebsites.net')]"
       }
     },
     {
