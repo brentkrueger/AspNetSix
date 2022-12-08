@@ -1,4 +1,4 @@
-name: Deploy Application Infrastructure
+name: Deploy Weather Applications Infrastructure to Azure - Development
 
 on:
   push:
